@@ -16,7 +16,7 @@ interface MotionContextValue {
 
 const MotionContext = createContext<MotionContextValue | undefined>(undefined);
 
-export function MotionProvider({ children }: { children: ReactNode }) {
+export function MotionProvider({ children }: { children: ReactNode }): JSX.Element {
   const [motionPreference, setMotionPreferenceState] = useState<MotionPreference>('full');
   const [systemPreference, setSystemPreference] = useState<MotionPreference>('full');
 

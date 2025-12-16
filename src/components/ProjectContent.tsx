@@ -282,35 +282,50 @@ function PosterCollageGrid({ images }: { images: string[] }) {
           if (containerWidth < 1024) return 4;
           return 5;
         }}
-        renderPhoto={({ photo, wrapperStyle, renderDefaultPhoto }) => (
-          <div
-            style={wrapperStyle}
-            className="cursor-pointer group relative overflow-hidden"
-            onClick={() => handleImageClick(photos.findIndex(p => p.src === photo.src))}
-          >
-            {renderDefaultPhoto({ wrapped: true })}
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-            
-            {/* Zoom indicator on hover */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div className="bg-white/90 rounded-full p-2 sm:p-3 shadow-lg">
-                <svg
-                  className="w-4 h-4 sm:w-6 sm:h-6 text-gray-800"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
-                  />
-                </svg>
+        render={{
+          wrapper: ({ onClick }, { photo, index, width, height }) => (
+            <div
+              style={{
+                width: `${width}px`,
+                height: `${height}px`,
+              }}
+              className="cursor-pointer group relative overflow-hidden"
+              onClick={() => handleImageClick(index)}
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                width={photo.width}
+                height={photo.height}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                }}
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+              
+              {/* Zoom indicator on hover */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="bg-white/90 rounded-full p-2 sm:p-3 shadow-lg">
+                  <svg
+                    className="w-4 h-4 sm:w-6 sm:h-6 text-gray-800"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                    />
+                  </svg>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          ),
+        }}
       />
 
       <ImageModal
