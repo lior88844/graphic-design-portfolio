@@ -62,7 +62,7 @@ export const projects: Project[] = [
     subsections: [
       {
         title: 'Amit Friedman',
-        description: 'Website and visual identity for pianist and composer Amit Friedman.',
+        description: 'Website and visual identity for saxophone player Amit Friedman.',
         images: [
           '/images/jazz-websites/amit-1.png',
           '/images/jazz-websites/amit-2.png',
@@ -73,7 +73,7 @@ export const projects: Project[] = [
       },
       {
         title: 'Alon Nir',
-        description: 'Digital presence for drummer Alon Nir, emphasizing rhythm and structure.',
+        description: 'Digital presence for bass player Alon Nir, emphasizing rhythm and structure.',
         images: [
           '/images/jazz-websites/alon-1.png',
           '/images/jazz-websites/alon-2.png',
@@ -85,7 +85,7 @@ export const projects: Project[] = [
       },
       {
         title: 'Gil Livni',
-        description: 'Website for bassist Gil Livni, focusing on minimalist aesthetics.',
+        description: 'Website for guitarist Gil Livni, focusing on minimalist aesthetics.',
         images: [
           '/images/jazz-websites/gil-1.png',
           '/images/jazz-websites/gil-2.png',
