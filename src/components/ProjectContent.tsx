@@ -33,14 +33,14 @@ export function ProjectContent({ description, services, images, link, instagram,
       <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-16">
           <SectionReveal>
-            <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Overview</h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed">
+            <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl font-normal mb-4 sm:mb-6">Overview</h2>
+            <p className="text-base sm:text-lg md:text-xl text-muted leading-relaxed">
               {description}
             </p>
           </SectionReveal>
 
           <SectionReveal delay={0.2}>
-            <h3 className="font-headline text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Services</h3>
+            <h3 className="font-headline text-xl sm:text-2xl font-normal mb-4 sm:mb-6">Services</h3>
             <ul className="space-y-2 sm:space-y-3">
               {services.map((service, index) => (
                 <motion.li
@@ -131,8 +131,8 @@ export function ProjectContent({ description, services, images, link, instagram,
             <SectionReveal>
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 sm:gap-6 mb-8 sm:mb-12 md:mb-16">
                 <div>
-                  <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">{subsection.title}</h2>
-                  <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl">
+                  <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal mb-4 sm:mb-6">{subsection.title}</h2>
+                  <p className="text-base sm:text-lg md:text-xl text-muted max-w-3xl">
                     {subsection.description}
                   </p>
                 </div>

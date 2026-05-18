@@ -10,14 +10,18 @@ const config: Config = {
     extend: {
       colors: {
         background: 'var(--background)',
+        surface: 'var(--surface)',
         foreground: 'var(--foreground)',
+        muted: 'var(--muted)',
         accent: 'var(--accent)',
         'accent-secondary': 'var(--accent-secondary)',
       },
       fontFamily: {
         sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-geist-mono)', 'monospace'],
-        headline: ['var(--font-greatsby)', 'var(--font-geist-sans)', 'system-ui', 'sans-serif'],
+        // "headline" and "display" both resolve to Instrument Serif — matches the hero h1
+        headline: ['var(--font-display)', 'Georgia', 'serif'],
+        display: ['var(--font-display)', 'Georgia', 'serif'],
       },
       animation: {
         'grain': 'grain 8s steps(10) infinite',

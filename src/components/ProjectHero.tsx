@@ -72,7 +72,7 @@ export function ProjectHero({ title, category, year, imageSrc, color }: ProjectH
                 transition={{ delay: 1, duration: 0.8 }}
               />
             )}
-            <h1 className="font-headline text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-3 sm:mb-4 text-white drop-shadow-2xl">
+            <h1 className="font-headline text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-normal mb-3 sm:mb-4 text-white drop-shadow-2xl" style={{ letterSpacing: '-0.03em' }}>
               {title}
             </h1>
             <div className="flex flex-wrap gap-3 sm:gap-4 md:gap-6 text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 drop-shadow-lg">

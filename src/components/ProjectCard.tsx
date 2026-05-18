@@ -52,7 +52,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         onMouseLeave={handleMouseLeave}
       >
         <motion.div
-          className="relative aspect-[4/3] bg-gray-100 overflow-hidden"
+          className="relative aspect-[4/3] bg-foreground/5 overflow-hidden"
           style={
             shouldReduceMotion
               ? {}
@@ -66,8 +66,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             shouldReduceMotion
               ? {}
               : {
-                  scale: 1.02,
-                  transition: { duration: 0.4, ease: [0.43, 0.13, 0.23, 0.96] },
+                  scale: 1.01,
+                  transition: { duration: 0.22, ease: [0.23, 1, 0.32, 1] },
                 }
           }
         >
@@ -77,11 +77,11 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               src={project.heroImage}
               alt={project.title}
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.04]"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             {/* Overlay */}
-            <div className="absolute inset-0 bg-foreground/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-foreground/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-out" />
           </div>
 
           {/* Accent bar */}
@@ -90,7 +90,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             style={{ backgroundColor: project.color || '#fff' }}
             initial={{ width: 0 }}
             whileHover={{ width: '100%' }}
-            transition={{ duration: 0.5, ease: [0.87, 0, 0.13, 1] }}
+            transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
           />
         </motion.div>
 
@@ -105,9 +105,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             <h3 className="font-headline text-xl sm:text-2xl md:text-3xl font-bold group-hover:text-accent transition-colors">
               {project.title}
             </h3>
-            <span className="text-xs sm:text-sm text-gray-500 whitespace-nowrap">{project.year}</span>
+            <span className="text-xs sm:text-sm text-muted whitespace-nowrap tabular-nums">{project.year}</span>
           </div>
-            <p className="text-sm sm:text-base text-gray-600 mt-1 sm:mt-2">{project.category}</p>
+            <p className="text-sm sm:text-base text-muted mt-1 sm:mt-2">{project.category}</p>
         </motion.div>
       </Link>
     </motion.div>

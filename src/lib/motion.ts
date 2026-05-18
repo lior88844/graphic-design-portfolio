@@ -4,11 +4,12 @@
 
 import { Variants, Transition } from 'framer-motion';
 
-// Custom easing curves
+// Custom easing curves (strong ease-out for UI; avoid ease-in on interactions)
 export const ease = {
   smooth: [0.43, 0.13, 0.23, 0.96],
+  outStrong: [0.23, 1, 0.32, 1] as [number, number, number, number],
   bounce: [0.68, -0.55, 0.265, 1.55],
-  sharp: [0.4, 0.0, 0.2, 1],
+  sharp: [0.4, 0, 0.2, 1],
   expressive: [0.87, 0, 0.13, 1],
 };
 
@@ -47,7 +48,7 @@ export const transition = {
 export const fadeInUp: Variants = {
   initial: {
     opacity: 0,
-    y: 60,
+    y: 28,
   },
   animate: {
     opacity: 1,
@@ -78,7 +79,7 @@ export const fadeIn: Variants = {
 export const scaleIn: Variants = {
   initial: {
     opacity: 0,
-    scale: 0.8,
+    scale: 0.94,
   },
   animate: {
     opacity: 1,
@@ -131,7 +132,7 @@ export const kineticChar: Variants = {
     opacity: 0,
     y: 40,
     filter: 'blur(10px)',
-    scale: 0.8,
+    scale: 0.94,
   },
   animate: {
     opacity: 1,
@@ -198,14 +199,17 @@ export const maskReveal: Variants = {
   },
 };
 
-// Hover/tap interactions
+// Hover/tap interactions (no bounce on default UI hovers)
 export const hoverScale = {
-  scale: 1.02,
-  transition: transition.bounce,
+  scale: 1.01,
+  transition: {
+    duration: duration.fast,
+    ease: ease.outStrong,
+  } as Transition,
 };
 
 export const tapScale = {
-  scale: 0.98,
+  scale: 0.97,
 };
 
 export const hoverLift = {

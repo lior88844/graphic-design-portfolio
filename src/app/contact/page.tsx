@@ -18,7 +18,7 @@ export default function ContactPage() {
         <div className="mb-16 sm:mb-24">
           <KineticHeadline
             text="Let's Connect"
-            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-8 sm:mb-12"
+            className="text-4xl sm:text-5xl md:text-7xl font-normal mb-8 sm:mb-12"
             as="h1"
           />
         </div>
@@ -32,9 +32,9 @@ export default function ContactPage() {
             transition={{ delay: 0.5 }}
           >
             {/* Intro */}
-            <p className="text-xl sm:text-2xl md:text-3xl leading-relaxed text-gray-700">
-              Interested in working together on a project? Get in touch to discuss visual identity,
-              web design, or print materials for your musical or cultural initiative.
+            <p className="text-xl sm:text-2xl md:text-3xl leading-relaxed text-muted max-w-prose">
+              Interested in working together? Get in touch to discuss engineering support, visual identity,
+              web design, or print — for products, artists, or cultural initiatives.
             </p>
 
             {/* Email Section */}
@@ -42,27 +42,26 @@ export default function ContactPage() {
               <motion.a
                 href={mailtoLink}
                 className="group relative block w-full text-left"
-                whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
-                whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
+                whileHover={shouldReduceMotion ? {} : { scale: 1.01 }}
+                whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
               >
-                <div className="relative bg-gradient-to-br from-accent/5 to-accent-secondary/5 rounded-2xl p-6 sm:p-8 md:p-12 border border-foreground/10 hover:border-accent/50 transition-colors overflow-hidden">
+                <div className="relative bg-gradient-to-br from-accent/5 to-accent-secondary/5 rounded-2xl p-6 sm:p-8 md:p-12 border border-foreground/10 hover:border-accent/50 transition-colors duration-200 overflow-hidden">
                   {/* Animated background on hover */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-br from-accent/10 to-accent-secondary/10"
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    initial={{ opacity: 0, scale: 0.96 }}
                     whileHover={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4 }}
+                    transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
                   />
 
                   <div className="relative z-10">
-                    <span className="block text-xs sm:text-sm text-gray-500 mb-2 uppercase tracking-wider">
+                    <span className="block text-xs sm:text-sm text-muted mb-2 tracking-wide">
                       Email
                     </span>
-                    <span className="block text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold mb-4 group-hover:text-accent transition-colors break-all">
+                    <span className="block text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold mb-4 group-hover:text-accent transition-colors duration-200 break-all">
                       {email}
                     </span>
-                    <span className="inline-flex items-center gap-2 text-sm text-gray-600">
-                      <span>✉️</span>
+                    <span className="inline-flex items-center gap-2 text-sm text-muted">
                       Click to send email
                     </span>
                   </div>
@@ -70,9 +69,9 @@ export default function ContactPage() {
                   {/* Corner decoration */}
                   <motion.div
                     className="absolute bottom-0 right-0 w-20 h-20 sm:w-32 sm:h-32 bg-accent/20 rounded-tl-full"
-                    initial={{ scale: 0 }}
-                    whileHover={{ scale: 1 }}
-                    transition={{ duration: 0.4 }}
+                    initial={{ opacity: 0, scale: 0.85 }}
+                    whileHover={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
                   />
                 </div>
               </motion.a>
@@ -116,7 +115,7 @@ export default function ContactPage() {
                       ↗
                     </motion.span>
                   </div>
-                  <span className="text-base text-gray-600">{social.handle}</span>
+                  <span className="text-base text-muted">{social.handle}</span>
                   
                   {/* Animated underline */}
                   <motion.div
@@ -124,7 +123,7 @@ export default function ContactPage() {
                     style={{ backgroundColor: social.color }}
                     initial={{ width: 0 }}
                     whileHover={{ width: '100%' }}
-                    transition={{ duration: 0.4 }}
+                    transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
                   />
                 </motion.a>
               ))}
@@ -133,9 +132,9 @@ export default function ContactPage() {
             {/* Additional Info */}
             <SectionReveal delay={0.9}>
               <div className="mt-16 sm:mt-24 pt-8 sm:pt-12 border-t border-foreground/10">
-                <h2 className="font-headline text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Availability</h2>
-                <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                  Currently accepting select projects for 2025. Typical project timelines range
+                <h2 className="font-headline text-xl sm:text-2xl font-normal mb-4 sm:mb-6">Availability</h2>
+                <p className="text-base sm:text-lg text-muted leading-relaxed max-w-prose">
+                  Currently accepting select projects for 2026. Typical project timelines range
                   from 2-8 weeks depending on scope. For inquiries about existing projects or
                   general questions, please reach out via email.
                 </p>
