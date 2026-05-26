@@ -45,14 +45,6 @@ export default function HomePage() {
             >
               View Work
             </Link>
-
-            <Link
-              href="/contact"
-              className="rounded-full px-14 py-5 text-base bg-white hover:scale-[1.03] transition-transform duration-200 inline-block cursor-none"
-              style={{ color: '#02162d' }}
-            >
-              Get in Touch
-            </Link>
           </div>
         </div>
       </section>

@@ -1,147 +1,141 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { KineticHeadline } from '@/components/KineticHeadline';
-import { SectionReveal } from '@/components/SectionReveal';
-import { useMotionPreference } from '@/lib/reduced-motion';
+
+const EMAIL = 'dearliordoron@gmail.com';
+const EMAIL_SUBJECT = "I want to work with you Lior!";
+const MAILTO = `mailto:${EMAIL}?subject=${encodeURIComponent(EMAIL_SUBJECT)}`;
+const INSTAGRAM_URL = 'https://instagram.com/dearliordoron';
+const INSTAGRAM_HANDLE = '@dearliordoron';
+
+const EASE = [0.25, 0.1, 0.25, 1] as const;
+
+const DISPLAY_FONT = 'var(--font-display), Georgia, serif';
 
 export default function ContactPage() {
-  const [email] = useState('dearliordoron@gmail.com');
-  const { shouldReduceMotion } = useMotionPreference();
-  const mailtoLink = `mailto:${email}?subject=${encodeURIComponent('I want to work with you Lior!')}`;
-
   return (
-    <div className="min-h-screen px-4 sm:px-6 py-8 sm:py-12">
-      <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <div className="mb-16 sm:mb-24">
-          <KineticHeadline
-            text="Let's Connect"
-            className="text-4xl sm:text-5xl md:text-7xl font-normal mb-8 sm:mb-12"
-            as="h1"
-          />
-        </div>
+    <div className="min-h-screen pt-12 sm:pt-16 pb-24 sm:pb-32">
+      <div className="max-w-5xl mx-auto px-5 md:px-10 lg:px-16">
+        {/* Headline */}
+        <motion.h1
+          className="font-normal leading-[0.92] text-foreground"
+          style={{
+            fontFamily: DISPLAY_FONT,
+            fontSize: 'clamp(3.5rem, 12vw, 8rem)',
+            letterSpacing: '-0.04em',
+          }}
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: EASE }}
+        >
+          Let&rsquo;s{' '}
+          <em className="not-italic text-foreground/70">Talk</em>
+        </motion.h1>
 
-        {/* Main Content */}
-        <SectionReveal>
-          <motion.div
-            className="space-y-12 sm:space-y-16"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
+        <motion.p
+          className="mt-8 sm:mt-10 text-base sm:text-lg text-foreground/70 max-w-xl leading-relaxed"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25, duration: 0.6, ease: EASE }}
+        >
+          Interested in working together? Reach out to discuss engineering support, visual identity,
+          web design, or print — for products, artists, and cultural initiatives.
+        </motion.p>
+
+        {/* Email — the centerpiece, treated as a typographic statement */}
+        <motion.div
+          className="mt-20 sm:mt-32"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.7, ease: EASE }}
+        >
+          <span className="block text-[10px] sm:text-xs uppercase tracking-[0.22em] text-foreground/50 mb-4 sm:mb-6">
+            Write to me
+          </span>
+
+          <a
+            href={MAILTO}
+            className="group inline-block max-w-full"
+            aria-label={`Send an email to ${EMAIL}`}
           >
-            {/* Intro */}
-            <p className="text-xl sm:text-2xl md:text-3xl leading-relaxed text-muted max-w-prose">
-              Interested in working together? Get in touch to discuss engineering support, visual identity,
-              web design, or print — for products, artists, or cultural initiatives.
-            </p>
+            <span
+              className="block font-normal text-foreground break-all transition-colors duration-300 group-hover:text-foreground/80"
+              style={{
+                fontFamily: DISPLAY_FONT,
+                fontSize: 'clamp(1.75rem, 5.5vw, 3.75rem)',
+                letterSpacing: '-0.03em',
+                lineHeight: 1.05,
+              }}
+            >
+              {EMAIL}
+            </span>
+            <span
+              aria-hidden="true"
+              className="block mt-3 h-px bg-foreground/80 origin-left scale-x-[0.06] transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-x-100"
+            />
+          </a>
 
-            {/* Email Section */}
-            <div className="py-8 sm:py-16">
-              <motion.a
-                href={mailtoLink}
-                className="group relative block w-full text-left"
-                whileHover={shouldReduceMotion ? {} : { scale: 1.01 }}
-                whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
+          <p className="mt-5 text-sm text-foreground/55 max-w-md leading-relaxed">
+            Typical reply within 24&ndash;48 hours.
+          </p>
+        </motion.div>
+
+        {/* Secondary channels — same type system, smaller scale */}
+        <motion.div
+          className="mt-20 sm:mt-32 grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-16"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-15%' }}
+          transition={{ duration: 0.6, ease: EASE }}
+        >
+          <div>
+            <span className="block text-[10px] sm:text-xs uppercase tracking-[0.22em] text-foreground/50 mb-4">
+              Elsewhere
+            </span>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-baseline gap-2 font-normal text-foreground transition-colors duration-300 hover:text-foreground/80"
+              style={{
+                fontFamily: DISPLAY_FONT,
+                fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
+                letterSpacing: '-0.03em',
+                lineHeight: 1.05,
+              }}
+            >
+              <span>Instagram</span>
+              <span
+                aria-hidden="true"
+                className="text-[0.55em] text-foreground/55 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               >
-                <div className="relative bg-gradient-to-br from-accent/5 to-accent-secondary/5 rounded-2xl p-6 sm:p-8 md:p-12 border border-foreground/10 hover:border-accent/50 transition-colors duration-200 overflow-hidden">
-                  {/* Animated background on hover */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-accent/10 to-accent-secondary/10"
-                    initial={{ opacity: 0, scale: 0.96 }}
-                    whileHover={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
-                  />
+                ↗
+              </span>
+            </a>
+            <p className="mt-2 text-sm text-foreground/55">{INSTAGRAM_HANDLE}</p>
+          </div>
 
-                  <div className="relative z-10">
-                    <span className="block text-xs sm:text-sm text-muted mb-2 tracking-wide">
-                      Email
-                    </span>
-                    <span className="block text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold mb-4 group-hover:text-accent transition-colors duration-200 break-all">
-                      {email}
-                    </span>
-                    <span className="inline-flex items-center gap-2 text-sm text-muted">
-                      Click to send email
-                    </span>
-                  </div>
-
-                  {/* Corner decoration */}
-                  <motion.div
-                    className="absolute bottom-0 right-0 w-20 h-20 sm:w-32 sm:h-32 bg-accent/20 rounded-tl-full"
-                    initial={{ opacity: 0, scale: 0.85 }}
-                    whileHover={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
-                  />
-                </div>
-              </motion.a>
-            </div>
-
-            {/* Social Links */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-              {[
-                {
-                  name: 'Instagram',
-                  handle: '@dearliordoron',
-                  url: 'https://instagram.com/dearliordoron',
-                  color: '#E1306C',
-                },
-              ].map((social, index) => (
-                <motion.a
-                  key={social.name}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block bg-foreground/5 hover:bg-foreground/10 rounded-xl p-6 sm:p-8 transition-colors border border-foreground/10 hover:border-foreground/20 min-h-[120px]"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7 + index * 0.1 }}
-                  whileHover={shouldReduceMotion ? {} : { y: -4 }}
-                >
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xl sm:text-2xl font-bold">{social.name}</span>
-                    <motion.span
-                      className="text-xl sm:text-2xl"
-                      whileHover={
-                        shouldReduceMotion
-                          ? {}
-                          : {
-                              x: 4,
-                              y: -4,
-                              transition: { duration: 0.2 },
-                            }
-                      }
-                    >
-                      ↗
-                    </motion.span>
-                  </div>
-                  <span className="text-base text-muted">{social.handle}</span>
-                  
-                  {/* Animated underline */}
-                  <motion.div
-                    className="mt-4 h-1 rounded-full"
-                    style={{ backgroundColor: social.color }}
-                    initial={{ width: 0 }}
-                    whileHover={{ width: '100%' }}
-                    transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
-                  />
-                </motion.a>
-              ))}
-            </div>
-
-            {/* Additional Info */}
-            <SectionReveal delay={0.9}>
-              <div className="mt-16 sm:mt-24 pt-8 sm:pt-12 border-t border-foreground/10">
-                <h2 className="font-headline text-xl sm:text-2xl font-normal mb-4 sm:mb-6">Availability</h2>
-                <p className="text-base sm:text-lg text-muted leading-relaxed max-w-prose">
-                  Currently accepting select projects for 2026. Typical project timelines range
-                  from 2-8 weeks depending on scope. For inquiries about existing projects or
-                  general questions, please reach out via email.
-                </p>
-              </div>
-            </SectionReveal>
-          </motion.div>
-        </SectionReveal>
+          <div>
+            <span className="block text-[10px] sm:text-xs uppercase tracking-[0.22em] text-foreground/50 mb-4">
+              Right Now
+            </span>
+            <p
+              className="font-normal text-foreground"
+              style={{
+                fontFamily: DISPLAY_FONT,
+                fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
+                letterSpacing: '-0.03em',
+                lineHeight: 1.05,
+              }}
+            >
+              Open for{' '}
+              <em className="not-italic text-foreground/60">2026</em>
+            </p>
+            <p className="mt-3 text-sm text-foreground/55 max-w-xs leading-relaxed">
+              Accepting select projects. Typical timelines range from two to eight weeks depending on scope.
+            </p>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

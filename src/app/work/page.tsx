@@ -210,30 +210,13 @@ export default function WorkPage() {
             </motion.p>
           </header>
 
-          <section className="flex-1 min-w-0 flex flex-col gap-12">
+          <section className="flex-1 min-w-0 flex flex-col gap-12 pb-40">
             {CATEGORIES.map((cat) => (
               <StickyCard key={cat.id} cat={cat} />
             ))}
           </section>
         </div>
       </motion.div>
-
-      <section className="px-5 md:px-10 lg:px-16 py-24 md:py-36 border-t border-white/[0.06]">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
-          <h2
-            className="font-normal leading-tight max-w-xs text-white"
-            style={{ fontSize: 'clamp(1.6rem, 3vw, 2.5rem)' }}
-          >
-            Have a project in mind?
-          </h2>
-          <Link
-            href="/contact"
-            className="pressable inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 rounded-full text-sm font-medium hover:bg-foreground/90 transition-colors duration-200 min-h-[44px]"
-          >
-            Get in touch <span aria-hidden="true">→</span>
-          </Link>
-        </div>
-      </section>
     </div>
   );
 }

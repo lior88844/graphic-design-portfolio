@@ -121,12 +121,19 @@ export function Navigation() {
 
             {/* CTA */}
             <motion.li variants={shouldReduceMotion ? {} : fadeInUp}>
-              <Link
-                href="/work"
+              <a
+                href="/lior-doron-cv.pdf"
+                download="Lior Doron - CV.pdf"
                 className="liquid-glass rounded-full px-6 py-2.5 text-sm text-white hover:scale-[1.03] transition-transform duration-200 inline-block"
               >
-                View Work
-              </Link>
+                Download{' '}
+                <em
+                  className="italic"
+                  style={{ fontFamily: 'var(--font-display), Georgia, serif' }}
+                >
+                  CV
+                </em>
+              </a>
             </motion.li>
           </motion.ul>
 
@@ -203,6 +210,29 @@ export function Navigation() {
                     </motion.li>
                   );
                 })}
+
+                <motion.li
+                  variants={{
+                    open: { opacity: 1, y: 0 },
+                    closed: { opacity: 0, y: 20 },
+                  }}
+                  transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
+                  className="pt-4"
+                >
+                  <a
+                    href="/lior-doron-cv.pdf"
+                    download="Lior Doron - CV.pdf"
+                    className="liquid-glass rounded-full px-7 py-3 text-base text-foreground inline-block"
+                  >
+                    Download{' '}
+                    <em
+                      className="italic"
+                      style={{ fontFamily: 'var(--font-display), Georgia, serif' }}
+                    >
+                      CV
+                    </em>
+                  </a>
+                </motion.li>
               </motion.ul>
             </div>
           </motion.div>
