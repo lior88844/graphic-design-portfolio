@@ -29,7 +29,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const nextProject = getNextProject(slug);
 
   return (
-    <div className="min-h-screen -mt-24">
+    <div className="min-h-screen -mt-[var(--nav-height)]">
       <ProjectHero
         title={project.title}
         category={project.category}

@@ -12,6 +12,14 @@
   --accent-secondary: oklch(0.68 0.10 220);/* soft periwinkle-blue complement */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  /* Fixed nav: py-4 + logo h-10 (mobile), py-6 + logo h-14 (md) + small buffer */
+  --nav-height: 5rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --nav-height: 7rem;
+  }
 }
 
 * {
@@ -28,6 +36,28 @@ body {
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Site-wide fixed background image ────────────────────────────────────
+   Renders /images/bg.png behind all page content using a viewport-anchored
+   pseudo-element. position:fixed avoids the well-known mobile (iOS Safari)
+   rendering quirks of `background-attachment: fixed` and keeps the image
+   stable while content scrolls past.
+
+   z-index: -1 paints the layer ABOVE body's own background-color but BELOW
+   body's children, so the deep-navy `--background` still acts as a fallback
+   if the image fails to load. The hero section opts back out by setting its
+   own opaque `bg-background`, keeping the video the only visual there. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url('/images/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* All headings use Instrument Serif — matches the hero h1 */
@@ -151,7 +181,8 @@ h1, h2, h3, h4 {
   overflow: hidden;
 }
 
-.liquid-glass::before {
+.liquid-glass::before,
+.glass-card::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -172,6 +203,53 @@ h1, h2, h3, h4 {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+  z-index: 2;
+}
+
+/* ─── Glass card with heavy grain noise ──────────────────────────────────
+   Used by the stacking cards on /work. Designed so that when sticky cards
+   overlap on scroll, the upper card's backdrop-filter actually blurs the
+   card underneath — giving real glassmorphism depth, not just a flat tint.
+   The ::after layer paints a tiled fractal-noise texture for heavy grain.
+*/
+.glass-card {
+  /* Translucent #070c1a so blur has something to act on without the blue tint */
+  background-color: rgba(7, 12, 26, 0.55);
+  backdrop-filter: blur(28px) saturate(140%);
+  -webkit-backdrop-filter: blur(28px) saturate(140%);
+  /* New stacking context: keeps the noise layer contained to this card */
+  isolation: isolate;
+  /* Subtle layered glow: enough lift for stacked cards without a bright halo. */
+  box-shadow:
+    0 0 72px -24px rgba(160, 190, 240, 0.18),
+    0 36px 80px -44px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.glass-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cfilter id='gcn'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23gcn)'/%3E%3C/svg%3E");
+  background-size: 240px 240px;
+  background-repeat: repeat;
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+  /* Place noise above motion.div content so it grains the whole card */
+  z-index: 1;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass-card {
+    background-color: rgba(7, 12, 26, 0.39);  
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .glass-card::after {
+    opacity: 0.18;
+  }
 }
 
 /* ─── Hero fade-rise animations ──────────────────────────────────────────── */

@@ -15,7 +15,7 @@ export default function HomePage() {
 
       <section
         id="hero-section"
-        className="relative -mt-20 md:-mt-24 min-h-[100dvh] flex flex-col overflow-hidden [&_*]:cursor-none cursor-none"
+        className="relative -mt-[var(--nav-height)] min-h-[100dvh] flex flex-col overflow-hidden bg-background [&_*]:cursor-none cursor-none"
       >
         <HeroVideo src={HERO_VIDEO} />
 
@@ -37,13 +37,23 @@ export default function HomePage() {
             Lior is a creative developer and designer shaping digital products and identities for music, culture, and independent brands.
           </p>
 
-          <Link
-            id="hero-cta"
-            href="/work"
-            className="animate-fade-rise-delay-2 liquid-glass rounded-full px-14 py-5 text-base text-white mt-12 hover:scale-[1.03] transition-transform duration-200 inline-block cursor-none"
-          >
-            View Work
-          </Link>
+          <div className="animate-fade-rise-delay-2 mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              id="hero-cta"
+              href="/work"
+              className="liquid-glass rounded-full px-14 py-5 text-base text-white hover:scale-[1.03] transition-transform duration-200 inline-block cursor-none"
+            >
+              View Work
+            </Link>
+
+            <Link
+              href="/contact"
+              className="rounded-full px-14 py-5 text-base bg-white hover:scale-[1.03] transition-transform duration-200 inline-block cursor-none"
+              style={{ color: '#02162d' }}
+            >
+              Get in Touch
+            </Link>
+          </div>
         </div>
       </section>
     </div>

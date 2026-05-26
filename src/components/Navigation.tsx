@@ -42,8 +42,9 @@ export function Navigation() {
     return () => { document.body.style.overflow = ''; };
   }, [isMobileMenuOpen]);
 
-  // When hero video is visible: glass, white text. Otherwise: solid bg, dark text.
-  const isGlass = isHome && !scrolled;
+  // At the top of any page: transparent nav. Once the user scrolls, switch to
+  // the blurred/solid background. Text stays light because the page bg is dark.
+  const isGlass = !scrolled;
 
   return (
     <nav

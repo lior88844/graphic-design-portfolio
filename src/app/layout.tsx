@@ -75,7 +75,7 @@ export default function RootLayout({
           <SmoothScroll>
             <GrainOverlay />
             <Navigation />
-            <main className="[overflow-x:clip] pt-20 md:pt-24">
+            <main className="[overflow-x:clip] pt-[var(--nav-height)]">
               {children}
             </main>
           </SmoothScroll>
