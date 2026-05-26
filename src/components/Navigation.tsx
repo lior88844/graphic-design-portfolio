@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { fadeInUp, stagger } from '@/lib/motion';
 import { useMotionPreference } from '@/lib/reduced-motion';
+import { asset } from '@/lib/asset';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -122,7 +123,7 @@ export function Navigation() {
             {/* CTA */}
             <motion.li variants={shouldReduceMotion ? {} : fadeInUp}>
               <a
-                href="/lior-doron-cv.pdf"
+                href={asset('/lior-doron-cv.pdf')}
                 download="Lior Doron - CV.pdf"
                 className="liquid-glass rounded-full px-6 py-2.5 text-sm text-white hover:scale-[1.03] transition-transform duration-200 inline-block"
               >
@@ -220,7 +221,7 @@ export function Navigation() {
                   className="pt-4"
                 >
                   <a
-                    href="/lior-doron-cv.pdf"
+                    href={asset('/lior-doron-cv.pdf')}
                     download="Lior Doron - CV.pdf"
                     className="liquid-glass rounded-full px-7 py-3 text-base text-foreground inline-block"
                   >

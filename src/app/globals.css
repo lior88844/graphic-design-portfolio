@@ -54,7 +54,9 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-image: url('/images/bg.png');
+  /* --bg-image is set in `src/app/layout.tsx` so the URL respects Next's basePath
+     when deployed to a project sub-path (e.g. GitHub Pages). */
+  background-image: var(--bg-image);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { KineticHeadline } from '@/components/KineticHeadline';
 import { SectionReveal } from '@/components/SectionReveal';
 import { useMotionPreference } from '@/lib/reduced-motion';
@@ -206,14 +207,18 @@ export default function AboutPage() {
             <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl font-normal mb-6 sm:mb-8">
               Let's work together
             </h2>
-            <motion.a
-              href="/contact"
-              className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-foreground hover:bg-foreground/90 text-background font-medium text-base sm:text-lg transition-colors rounded-full min-h-[44px]"
+            <motion.div
+              className="inline-block"
               whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
               whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
             >
-              Get in Touch
-            </motion.a>
+              <Link
+                href="/contact"
+                className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-foreground hover:bg-foreground/90 text-background font-medium text-base sm:text-lg transition-colors rounded-full min-h-[44px]"
+              >
+                Get in Touch
+              </Link>
+            </motion.div>
           </div>
         </SectionReveal>
       </div>
