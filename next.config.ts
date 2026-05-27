@@ -6,9 +6,6 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // Required for static export
   },
-  experimental: {
-    optimizePackageImports: ['framer-motion'],
-  },
 };
 
 export default nextConfig;

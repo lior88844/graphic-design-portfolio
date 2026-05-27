@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { fadeInUp, stagger } from '@/lib/motion';
+import { stagger } from '@/lib/motion';
 import { useMotionPreference } from '@/lib/reduced-motion';
 
 const navLinks = [
@@ -75,25 +75,22 @@ export function Navigation() {
           </Link>
 
           {/* Desktop Nav Links */}
-          <motion.ul
-            className="hidden md:flex gap-6 lg:gap-8 items-center"
-            initial="initial"
-            animate="animate"
-            variants={shouldReduceMotion ? {} : {
-              animate: {
-                transition: {
-                  staggerChildren: stagger.fast,
-                  delayChildren: 0.2,
-                },
-              },
-            }}
-          >
-            {navLinks.map((link) => {
+          <ul className="hidden md:flex gap-6 lg:gap-8 items-center">
+            {navLinks.map((link, index) => {
               const isActive = pathname === link.href ||
                 (link.href === '/work' && pathname.startsWith('/work'));
 
               return (
-                <motion.li key={link.href} variants={shouldReduceMotion ? {} : fadeInUp}>
+                <motion.li
+                  key={link.href}
+                  initial={shouldReduceMotion ? false : { opacity: 0, y: 28 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    ease: [0.43, 0.13, 0.23, 0.96],
+                    delay: 0.2 + index * stagger.fast,
+                  }}
+                >
                   <Link
                     href={link.href}
                     className={`text-sm transition-colors duration-200 relative ${
@@ -120,7 +117,15 @@ export function Navigation() {
             })}
 
             {/* CTA */}
-            <motion.li variants={shouldReduceMotion ? {} : fadeInUp}>
+            <motion.li
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.5,
+                ease: [0.43, 0.13, 0.23, 0.96],
+                delay: 0.2 + navLinks.length * stagger.fast,
+              }}
+            >
               <a
                 href="/lior-doron-cv.pdf"
                 download="Lior Doron - CV.pdf"
@@ -135,7 +140,7 @@ export function Navigation() {
                 </em>
               </a>
             </motion.li>
-          </motion.ul>
+          </ul>
 
           {/* Mobile Menu Button */}
           <button
