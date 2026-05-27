@@ -210,7 +210,7 @@ export default function WorkPage() {
             </motion.p>
           </header>
 
-          <section className="flex-1 min-w-0 flex flex-col gap-12 pb-40">
+          <section className="flex-1 min-w-0 flex flex-col gap-12 pb-[60dvh]">
             {CATEGORIES.map((cat) => (
               <StickyCard key={cat.id} cat={cat} />
             ))}
