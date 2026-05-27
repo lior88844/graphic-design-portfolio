@@ -2,12 +2,11 @@
 
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { asset } from '@/lib/asset';
 
 const HeroVideo = dynamic(() => import('@/components/HeroVideo'), { ssr: false });
 const HeroCursor = dynamic(() => import('@/components/HeroCursor'), { ssr: false });
 
-const HERO_VIDEO = asset('/videos/hero-video.mp4');
+const HERO_VIDEO = '/videos/hero-video.mp4';
 
 export default function HomePage() {
   return (

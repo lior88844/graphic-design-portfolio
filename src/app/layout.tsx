@@ -8,7 +8,6 @@ import { GrainOverlay } from '@/components/GrainOverlay';
 import { MotionProvider } from '@/lib/reduced-motion';
 import { SmoothScroll } from '@/components/SmoothScroll';
 import { SunflowerLoaderClient } from '@/components/SunflowerLoaderClient';
-import { asset } from '@/lib/asset';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -66,15 +65,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const bodyStyle = {
-    ['--bg-image' as string]: `url('${asset('/images/bg.png')}')`,
-  } as React.CSSProperties;
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${greatsby.variable} ${instrumentSerif.variable} font-sans antialiased bg-background text-foreground`}
-        style={bodyStyle}
       >
         <MotionProvider>
           <SunflowerLoaderClient />
