@@ -66,7 +66,7 @@ export function Navigation() {
               className="relative w-28 h-10 sm:w-32 sm:h-12 md:w-40 md:h-14"
             >
               <Image
-                src={asset('/logo.png')}
+                src="/logo.png"
                 alt="Lior Doron"
                 fill
                 className="object-contain object-left transition-all duration-300"

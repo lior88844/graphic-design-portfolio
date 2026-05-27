@@ -44,14 +44,14 @@ export const metadata: Metadata = {
   description:
     'Software engineer and graphic designer building digital products, interfaces, and visual identity for jazz, culture, and live music.',
   icons: {
-    icon: asset('/logo.png'),
-    apple: asset('/logo.png'),
+    icon: '/logo.png',
+    apple: '/logo.png',
   },
   openGraph: {
     title: 'Lior Doron — Software Engineer & Graphic Designer',
     description:
       'Software engineer and graphic designer building digital products, interfaces, and visual identity for jazz, culture, and live music.',
-    images: [asset('/logo.png')],
+    images: ['/logo.png'],
   },
 };
 
