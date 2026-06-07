@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getProjectBySlug, getNextProject } from '@/content/projects';
-import { ProjectHero } from '@/components/ProjectHero';
+import { ProjectHeader } from '@/components/ProjectHeader';
 import { ProjectContent } from '@/components/ProjectContent';
 import { NextProject } from '@/components/NextProject';
 
@@ -15,6 +15,7 @@ export async function generateStaticParams() {
     { slug: 'raanana-jazz-festival' },
     { slug: 'websites-for-jazz-musicians' },
     { slug: 'posters-for-jazz-performances' },
+    { slug: 'apps' },
   ];
 }
 
@@ -30,11 +31,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <div className="min-h-screen -mt-[var(--nav-height)]">
-      <ProjectHero
+      <ProjectHeader
         title={project.title}
         category={project.category}
         year={project.year}
-        imageSrc={project.heroImage}
         color={project.color}
       />
 

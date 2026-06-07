@@ -26,6 +26,7 @@ interface ProjectContentProps {
 export function ProjectContent({ description, services, images, link, instagram, subsections, slug }: ProjectContentProps) {
   const isJazzPosters = slug === 'posters-for-jazz-performances';
   const isRaananaJazz = slug === 'raanana-jazz-festival';
+  const isApps = slug === 'apps';
   
   return (
     <div className="bg-background">
@@ -119,7 +120,16 @@ export function ProjectContent({ description, services, images, link, instagram,
       {isRaananaJazz && (
         <section className="py-8 sm:py-12 px-4 sm:px-6">
           <div className="max-w-[1800px] mx-auto">
-            <RaananaJazzGrid images={images} />
+            <SquareImageGrid images={images} label="Raanana Jazz Festival" />
+          </div>
+        </section>
+      )}
+
+      {/* Apps showcase — portrait phone screenshots, no cropping */}
+      {isApps && (
+        <section className="pb-12 sm:pb-16 md:pb-24 px-4 sm:px-6">
+          <div className="max-w-7xl mx-auto">
+            <AppShowcaseGrid images={images} />
           </div>
         </section>
       )}
@@ -338,7 +348,7 @@ function PosterCollageGrid({ images }: { images: string[] }) {
   );
 }
 
-function RaananaJazzGrid({ images }: { images: string[] }) {
+function SquareImageGrid({ images, label }: { images: string[]; label: string }) {
   const { shouldReduceMotion } = useMotionPreference();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedAlt, setSelectedAlt] = useState<string>('');
@@ -357,7 +367,7 @@ function RaananaJazzGrid({ images }: { images: string[] }) {
     <>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0">
         {images.map((image, index) => {
-          const altText = `Raanana Jazz Festival image ${index + 1}`;
+          const altText = `${label} image ${index + 1}`;
           
           return (
             <motion.div
@@ -397,6 +407,63 @@ function RaananaJazzGrid({ images }: { images: string[] }) {
                 </div>
               </div>
             </motion.div>
+          );
+        })}
+      </div>
+
+      <ImageModal
+        isOpen={selectedImage !== null}
+        onClose={handleCloseModal}
+        imageSrc={selectedImage || ''}
+        imageAlt={selectedAlt}
+      />
+    </>
+  );
+}
+
+function AppShowcaseGrid({ images }: Readonly<{ images: string[] }>) {
+  const { shouldReduceMotion } = useMotionPreference();
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedAlt, setSelectedAlt] = useState<string>('');
+
+  const handleImageClick = (image: string, alt: string) => {
+    setSelectedImage(image);
+    setSelectedAlt(alt);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedImage(null);
+    setSelectedAlt('');
+  };
+
+  return (
+    <>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+        {images.map((image, index) => {
+          const altText = `App screen ${index + 1}`;
+
+          return (
+            <motion.button
+              key={image}
+              type="button"
+              className="group relative block w-full overflow-hidden rounded-[1.75rem] bg-foreground/5 ring-1 ring-foreground/10 cursor-pointer"
+              style={{ aspectRatio: '9 / 19.5' }}
+              initial={shouldReduceMotion ? {} : { opacity: 0, y: 24 }}
+              whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-10%' }}
+              transition={{ duration: 0.5, delay: (index % 4) * 0.08 }}
+              whileHover={shouldReduceMotion ? {} : { y: -6 }}
+              onClick={() => handleImageClick(image, altText)}
+            >
+              <Image
+                src={image}
+                alt={altText}
+                fill
+                className="object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
+            </motion.button>
           );
         })}
       </div>

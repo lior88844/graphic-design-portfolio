@@ -122,6 +122,26 @@ export const projects: Project[] = [
     ],
     color: '#F7B731',
   },
+  {
+    id: 'apps',
+    title: 'Apps',
+    slug: 'apps',
+    category: 'Product Design',
+    year: '2024',
+    description:
+      'Interface and product design for mobile and web apps — translating brand systems into usable, considered digital products with the same structure and care as building software.',
+    services: ['Product Design', 'UI Design', 'UX', 'Prototyping'],
+    heroImage: '/images/apps/hero.PNG',
+    images: [
+      '/images/apps/1.png',
+      '/images/apps/2.png',
+      '/images/apps/3.png',
+      '/images/apps/4.PNG',
+      '/images/apps/5.PNG',
+      '/images/apps/7.png',
+    ],
+    color: '#6C5CE7',
+  },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {

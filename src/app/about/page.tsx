@@ -1,223 +1,188 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
-import Image from 'next/image';
-import { KineticHeadline } from '@/components/KineticHeadline';
+import { motion } from 'framer-motion';
 import { SectionReveal } from '@/components/SectionReveal';
+import { Timeline, type TimelineEntry } from '@/components/Timeline';
 import { useMotionPreference } from '@/lib/reduced-motion';
 
-export default function AboutPage() {
-  const ref = useRef(null);
-  const { shouldReduceMotion } = useMotionPreference();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'],
-  });
+/** Hiring-focused career timeline that drives the About page. */
+const timeline: TimelineEntry[] = [
+  {
+    period: '2013–2014',
+    title: 'Educational Emissary — Toronto',
+    points: [
+      'Led educational and community programs abroad for a year of service.',
+      'Built early experience in public speaking, facilitation, and cross-cultural communication.',
+    ],
+  },
+  {
+    period: '2014–2016',
+    title: 'Israel Defense Forces — Instructor & Team Lead',
+    points: [
+      'Served as a Spike missile-systems instructor, then promoted to head of instructors.',
+      'Designed and delivered training programs for new instructors.',
+      'Developed leadership, instruction, and high-stakes communication skills.',
+    ],
+  },
+  {
+    period: '2016–2017',
+    title: 'Educational Emissary — Washington, D.C.',
+    points: [
+      'Designed and ran education and outreach programs for diverse audiences.',
+      'Organized large-scale events and managed multiple stakeholders.',
+      'Strengthened communication, teaching, and program-management skills.',
+    ],
+  },
+  {
+    period: '2017–2020',
+    title: 'Foundations in Communication & Psychology',
+    points: [
+      'Built public-speaking and live-performance experience.',
+      'Developed early foundations in psychology and human behavior.',
+    ],
+  },
+  {
+    period: '2020–2021',
+    title: 'B.A. Studies — Tel-Hai College',
+    points: [
+      'Began a degree focused on Psychology and East Asian Studies.',
+      'Started tutoring statistics, including students with learning disabilities.',
+    ],
+  },
+  {
+    period: '2021–2022',
+    title: 'Statistics Tutor',
+    points: [
+      'Tutored 40+ college students in statistics.',
+      'Achieved top marks in statistics coursework.',
+      'Sharpened quantitative, analytical, and teaching skills.',
+    ],
+  },
+  {
+    period: '2023',
+    title: 'Full-Stack Engineering Training',
+    points: [
+      'Completed the Coding Academy full-stack bootcamp.',
+      'JavaScript, React, Node.js, MongoDB, and modern web development.',
+      'Transitioned from psychology and education into software engineering.',
+    ],
+  },
+  {
+    period: 'Mid 2023',
+    title: 'Software Engineer — Plannie',
+    points: [
+      'Built frontend features and third-party integrations.',
+      'Shipped payments, SMS, and WhatsApp functionality.',
+      'Resolved customer-facing technical issues across support and engineering.',
+    ],
+  },
+  {
+    period: '2023–2024',
+    title: 'Expanded Engineering Scope',
+    points: [
+      'Worked across Angular, Vue, React, Node.js, AWS, Twilio, payments, and calendar integrations.',
+      'Took ownership of increasingly complex problems.',
+      'Became a trusted point of contact for difficult technical issues.',
+    ],
+  },
+  {
+    period: '2024',
+    title: 'B.A. in Psychology & East Asian Studies',
+    points: [
+      'Completed the degree with a dual major.',
+      'Conducted academic research and wrote seminar papers on behavior, identity, and East Asian studies.',
+    ],
+  },
+  {
+    period: '2024–2025',
+    title: 'Mandarin Studies & Remote Engineering — Taipei',
+    points: [
+      'Awarded a Huayu Scholarship to study Mandarin at NTNU (Mandarin Training Center).',
+      'Balanced full-time language study with remote software engineering.',
+      'Gained cross-cultural fluency working across time zones and cultures.',
+    ],
+  },
+  {
+    period: '2024–2025',
+    title: 'Design, Branding & Web for Musicians',
+    points: [
+      'Designed posters, branding, and visual identities for musicians and cultural projects.',
+      'Built and shipped websites for artists and events.',
+      'Combined engineering, design, and visual storytelling end to end.',
+    ],
+  },
+  {
+    period: '2025',
+    title: 'Expanding into Product & UX',
+    points: [
+      'Deepened focus on UX/UI design and product management.',
+      'Moved from pure engineering toward human-centered, product-driven work.',
+    ],
+  },
+  {
+    period: '2025',
+    title: 'Independent Product Projects',
+    points: [
+      'FairTips — a restaurant tip calculator.',
+      "Wheel of Imagination — a children's creativity app.",
+      'Lead-generation tools and user-retention dashboards.',
+      'AI and WhatsApp automation prototypes.',
+    ],
+  },
+  {
+    period: '2025–2026',
+    title: 'Product Engineer — Muza',
+    points: [
+      'Engineered a product-focused project in close collaboration with founders and stakeholders.',
+      'Drove product thinking and user-experience decisions alongside the build.',
+    ],
+  },
+  {
+    period: '2026',
+    title: 'Relocating to Boston',
+    points: [
+      'Moving to the Boston area and available for new opportunities.',
+      'Open to roles in product management, customer success, solutions engineering, and UX/design.',
+      'Focused on human-centered technology.',
+    ],
+  },
+];
 
-  const rhythmX = useTransform(scrollYProgress, [0, 1], [-100, 100]);
-  const rhythmRotate = useTransform(scrollYProgress, [0, 1], [0, 360]);
+export default function AboutPage() {
+  const { shouldReduceMotion } = useMotionPreference();
 
   return (
-    <div className="min-h-screen px-4 sm:px-6 py-8 sm:py-12">
-      <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <div className="mb-16 sm:mb-24">
-          <KineticHeadline
-            text="About"
-            className="text-4xl sm:text-5xl md:text-7xl font-normal mb-8 sm:mb-12"
-            as="h1"
-          />
-        </div>
-
-        {/* Main Content */}
+    <div className="min-h-screen px-4 sm:px-6 py-12 sm:py-20">
+      <div className="max-w-3xl mx-auto">
+        {/* Semi-headline */}
         <SectionReveal>
-          <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16 items-start">
-            {/* Photo */}
-            <motion.div
-              className="w-full md:w-1/3 lg:w-2/5 flex-shrink-0"
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-            >
-              <div className="relative w-full aspect-[3/4] overflow-hidden rounded-lg">
-                <Image
-                  src="/Shani -1.PNG"
-                  alt="Lior Shani"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </motion.div>
-
-            {/* Text Content */}
-            <div className="flex-1 prose prose-invert prose-lg md:prose-xl max-w-none">
-              <motion.p
-                className="text-lg sm:text-xl leading-relaxed mb-6 sm:mb-8 text-foreground/90 max-w-[65ch]"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-              >
-                Lior is a software engineer and graphic designer. She builds front-end interfaces and
-                digital products while shaping visual identities, websites, and print — often for jazz
-                musicians, festivals, and cultural projects. The two sides of her practice inform each
-                other: engineering brings structure and systems thinking; design brings narrative, type,
-                and color.
-              </motion.p>
-
-              <motion.p
-                className="text-lg sm:text-xl leading-relaxed mb-6 sm:mb-8 text-foreground/90 max-w-[65ch]"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.6 }}
-              >
-                Her connection to jazz began behind the scenes. She started as a waitress at Beit HaAmudim,
-                a jazz club in Tel Aviv, where long nights around live performances gradually turned into an
-                entry point into the music itself. During that time, she began photographing concerts, learning
-                how to observe rhythm, atmosphere, and presence through a lens.
-              </motion.p>
-
-              <motion.p
-                className="text-lg sm:text-xl leading-relaxed mb-6 sm:mb-8 text-foreground/90 max-w-[65ch]"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.6 }}
-              >
-                She moved into front-end software engineering, working closely with interfaces, layout, and
-                tools such as Photoshop and the Adobe suite. That period deepened her understanding of how
-                design lives inside technology — and how disciplined code can carry a visual idea all the way
-                to the screen.
-              </motion.p>
-
-              <motion.p
-                className="text-lg sm:text-xl leading-relaxed mb-6 sm:mb-8 text-foreground/90 max-w-[65ch]"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.1, duration: 0.6 }}
-              >
-                Design entered naturally through her surroundings. She began creating posters and visuals
-                for friends' gigs and shows, which grew into website design and visual identities for jazz
-                musicians. What started as informal collaborations evolved into a focused practice centered
-                on music and culture.
-              </motion.p>
-
-              <motion.p
-                className="text-lg sm:text-xl leading-relaxed mb-6 sm:mb-8 text-foreground/90 max-w-[65ch]"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.3, duration: 0.6 }}
-              >
-                Her largest project to date is the Raanana Jazz Festival, taking place from December 18–20, 
-                2025, for which she created the visual identity, website, merchandise, and digital presence.
-              </motion.p>
-
-              <motion.p
-                className="text-lg sm:text-xl leading-relaxed text-foreground/90 max-w-[65ch]"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.5, duration: 0.6 }}
-              >
-                Today, her work sits at the intersection of software engineering, design, and photography.
-                She ships front-end experiences and continues visual identity and web design for artists and
-                venues, while photographing live performances. Her visual language stays consistent and
-                timeless, while she embraces contemporary tools — including AI and new software — whenever
-                they best serve the project.
-              </motion.p>
-            </div>
-          </div>
+          <p className="mb-3 text-xs uppercase tracking-[0.25em] text-muted sm:mb-4 sm:text-sm">
+            About
+          </p>
+          <h1 className="mb-14 max-w-2xl font-display text-2xl leading-snug text-foreground sm:mb-20 sm:text-3xl md:text-4xl">
+            Software engineer with a product and design sensibility — built on
+            psychology, education, and work across four countries.
+          </h1>
         </SectionReveal>
 
-        {/* Rhythm motif */}
-        <div ref={ref} className="my-20 sm:my-32 flex justify-center overflow-hidden">
-          <motion.div
-            className="relative w-48 h-48 sm:w-64 sm:h-64"
-            style={
-              shouldReduceMotion
-                ? {}
-                : {
-                    x: rhythmX,
-                    rotate: rhythmRotate,
-                  }
-            }
-          >
-            {/* Abstract rhythm visualization */}
-            <svg viewBox="0 0 200 200" className="w-full h-full">
-              <motion.circle
-                cx="100"
-                cy="100"
-                r="80"
-                fill="none"
-                stroke="var(--accent)"
-                strokeWidth="2"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.3 }}
-                viewport={{ once: true }}
-                transition={{ duration: 2, ease: 'easeInOut' }}
-              />
-              <motion.circle
-                cx="100"
-                cy="100"
-                r="60"
-                fill="none"
-                stroke="var(--accent-secondary)"
-                strokeWidth="2"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.3 }}
-                viewport={{ once: true }}
-                transition={{ duration: 2, delay: 0.2, ease: 'easeInOut' }}
-              />
-              <motion.circle
-                cx="100"
-                cy="100"
-                r="40"
-                fill="none"
-                stroke="var(--accent)"
-                strokeWidth="2"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.3 }}
-                viewport={{ once: true }}
-                transition={{ duration: 2, delay: 0.4, ease: 'easeInOut' }}
-              />
-              {/* Animated lines */}
-              {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => (
-                <motion.line
-                  key={angle}
-                  x1="100"
-                  y1="100"
-                  x2={100 + 80 * Math.cos((angle * Math.PI) / 180)}
-                  y2={100 + 80 * Math.sin((angle * Math.PI) / 180)}
-                  stroke="var(--accent)"
-                  strokeWidth="1"
-                  opacity="0.2"
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, delay: 0.1 * i }}
-                />
-              ))}
-            </svg>
-          </motion.div>
-        </div>
+        {/* Timeline drives the page */}
+        <Timeline entries={timeline} />
 
         {/* Contact CTA */}
-        <SectionReveal>
-          <div className="mt-20 sm:mt-32 text-center">
-            <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl font-normal mb-6 sm:mb-8">
-              Let's work together
-            </h2>
-            <motion.a
-              href="/contact"
-              className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-foreground hover:bg-foreground/90 text-background font-medium text-base sm:text-lg transition-colors rounded-full min-h-[44px]"
-              whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
-              whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
-            >
-              Get in Touch
-            </motion.a>
-          </div>
-        </SectionReveal>
+        <div className="mt-24 text-center sm:mt-32">
+          <h2 className="mb-6 font-display text-2xl font-normal sm:mb-8 sm:text-3xl md:text-4xl">
+            Let&apos;s work together
+          </h2>
+          <motion.a
+            href="/contact"
+            className="inline-block min-h-[44px] rounded-full bg-foreground px-6 py-3 text-base font-medium text-background transition-colors hover:bg-foreground/90 sm:px-8 sm:py-4 sm:text-lg"
+            whileHover={shouldReduceMotion ? {} : { scale: 1.05 }}
+            whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
+          >
+            Get in Touch
+          </motion.a>
+        </div>
       </div>
     </div>
   );
 }
-

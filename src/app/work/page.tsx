@@ -63,6 +63,21 @@ const CATEGORIES: Category[] = [
       right: '/images/raanana-jazz/hero.png',
     },
   },
+  {
+    id: 'apps',
+    index: 3,
+    label: 'Product Design',
+    title: 'Apps',
+    description: 'Interface and product design — brand systems translated into usable digital products.',
+    href: '/work/apps',
+    cta: 'View Apps',
+    color: '#6C5CE7',
+    images: {
+      leftTop: '/images/apps/1.png',
+      leftBottom: '/images/apps/2.png',
+      right: '/images/apps/hero.PNG',
+    },
+  },
 ];
 
 /** Each card steps down below the nav so they stack on scroll */
