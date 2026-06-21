@@ -18,11 +18,22 @@ export default function SunflowerLoader() {
   const [pct, setPct] = useState(0);
 
   useEffect(() => {
-    // Percentage ticks from 0 → 100 over the petal animation window
+    // How many seconds have already elapsed since the browser first painted
+    // the SSR HTML. On localhost this is ~0ms; on a live CDN it can be 500ms–2s,
+    // which is why the loader appeared to "restart" at 0% after hydration.
+    const elapsedSec = performance.now() / 1000;
+
+    // Remaining time until we COULD dismiss (accounting for already-elapsed time).
+    // Never go below 0.5s so the exit animation has room to play.
+    const remaining = Math.max(0.5, HIDE_AFTER - elapsedSec);
+
+    // Pre-seed the counter to wherever it should be based on elapsed time,
+    // so it never jumps backwards or restarts from 0% mid-animation.
     const animMs = PETAL_END * 1000;
     const tick = 40; // ms per update
     const step = 100 / (animMs / tick);
-    let current = 0;
+    let current = Math.min(99, (elapsedSec / PETAL_END) * 100);
+    setPct(Math.round(current));
 
     const counter = setInterval(() => {
       current = Math.min(100, current + step);
@@ -30,12 +41,40 @@ export default function SunflowerLoader() {
       if (current >= 100) clearInterval(counter);
     }, tick);
 
-    // Fade out the overlay
-    const hide = setTimeout(() => setDone(true), HIDE_AFTER * 1000);
+    // Gate dismissal on BOTH conditions:
+    // (a) minimum animation time has elapsed, AND
+    // (b) the page 'load' event has fired (all images, fonts, CSS bg downloaded).
+    let minTimeDone = false;
+    let pageLoaded = document.readyState === 'complete';
+
+    const tryHide = () => {
+      if (minTimeDone && pageLoaded) setDone(true);
+    };
+
+    const minTimer = setTimeout(() => {
+      minTimeDone = true;
+      tryHide();
+    }, remaining * 1000);
+
+    // Hard cap: never hold the loader beyond 8 seconds total page time so a
+    // single slow or failing resource cannot hang the site indefinitely.
+    const maxWaitMs = Math.max(0, 8000 - elapsedSec * 1000);
+    const maxTimer = setTimeout(() => setDone(true), maxWaitMs);
+
+    const onLoad = () => {
+      pageLoaded = true;
+      tryHide();
+    };
+
+    if (!pageLoaded) {
+      window.addEventListener('load', onLoad);
+    }
 
     return () => {
       clearInterval(counter);
-      clearTimeout(hide);
+      clearTimeout(minTimer);
+      clearTimeout(maxTimer);
+      window.removeEventListener('load', onLoad);
     };
   }, []);
 

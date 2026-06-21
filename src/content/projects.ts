@@ -2,6 +2,13 @@
  * Project content data
  */
 
+export interface PhotoMeta {
+  src: string;
+  width: number;
+  height: number;
+  caption?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -15,6 +22,7 @@ export interface Project {
   color?: string;
   link?: string;
   instagram?: string;
+  photoAlbum?: PhotoMeta[];
   subsections?: {
     title: string;
     description: string;
@@ -121,6 +129,46 @@ export const projects: Project[] = [
       '/images/jazz-posters/12.png',
     ],
     color: '#F7B731',
+  },
+  {
+    id: 'photography',
+    title: 'Photography',
+    slug: 'photography',
+    category: 'Photography',
+    year: '2022–2025',
+    description:
+      'Jazz concert photography shot across stages and intimate venues. Each frame chases the unrepeatable — a horn player mid-phrase, a drummer in silhouette, a spotlight dissolving into smoke.',
+    services: ['Concert Photography', 'Event Coverage', 'Photo Editing'],
+    heroImage: '/images/photography/05.jpg',
+    images: [
+      '/images/photography/01.jpg',
+      '/images/photography/02.jpg',
+      '/images/photography/03.jpg',
+      '/images/photography/04.jpg',
+      '/images/photography/05.jpg',
+      '/images/photography/06.jpg',
+      '/images/photography/07.jpg',
+      '/images/photography/08.jpg',
+      '/images/photography/09.jpg',
+      '/images/photography/10.jpg',
+      '/images/photography/11.jpg',
+      '/images/photography/12.jpg',
+    ],
+    color: '#F4A261',
+    photoAlbum: [
+      { src: '/images/photography/01.jpg', width: 1200, height: 800 },
+      { src: '/images/photography/02.jpg', width: 800, height: 1200 },
+      { src: '/images/photography/03.jpg', width: 1200, height: 900 },
+      { src: '/images/photography/04.jpg', width: 900, height: 1200 },
+      { src: '/images/photography/05.jpg', width: 1200, height: 800 },
+      { src: '/images/photography/06.jpg', width: 800, height: 1000 },
+      { src: '/images/photography/07.jpg', width: 1000, height: 1000 },
+      { src: '/images/photography/08.jpg', width: 1200, height: 800 },
+      { src: '/images/photography/09.jpg', width: 800, height: 1200 },
+      { src: '/images/photography/10.jpg', width: 1100, height: 800 },
+      { src: '/images/photography/11.jpg', width: 800, height: 1100 },
+      { src: '/images/photography/12.jpg', width: 1200, height: 700 },
+    ],
   },
   {
     id: 'apps',

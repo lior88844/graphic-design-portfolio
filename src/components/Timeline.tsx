@@ -19,84 +19,93 @@ interface TimelineProps {
 }
 
 /**
- * Scroll-driven vertical timeline. A single gold spine runs down the left
- * edge and fills as the reader scrolls; each milestone reveals on entry.
- * Built to scale to many chronological entries and to act as the primary
- * layout of a page rather than a boxed widget.
+ * Horizontal, scroll-snapping timeline. A gold spine runs left-to-right and
+ * fills with horizontal scroll progress; each milestone sits as a column with
+ * its node on the spine and content beneath. `data-lenis-prevent` lets the
+ * container scroll natively despite the site's vertical smooth-scroll.
  */
 export function Timeline({ entries, className = '' }: Readonly<TimelineProps>) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const { shouldReduceMotion } = useMotionPreference();
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start center', 'end center'],
-  });
-  const fillScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const { scrollXProgress } = useScroll({ container: scrollRef });
+  const fillScaleX = useTransform(scrollXProgress, [0, 1], [0, 1]);
 
   return (
-    <div ref={containerRef} className={`relative ${className}`}>
-      {/* Base spine */}
-      <span
-        aria-hidden
-        className="absolute left-[7px] top-2 bottom-2 w-px bg-foreground/15"
-      />
-      {/* Progress fill */}
-      {!shouldReduceMotion && (
-        <motion.span
-          aria-hidden
-          style={{ scaleY: fillScale }}
-          className="absolute left-[7px] top-2 bottom-2 w-px origin-top bg-accent"
-        />
-      )}
+    <div className={`relative ${className}`}>
+      <p className="mb-4 pl-[max(1rem,calc((100%_-_64rem)/2))] font-sans text-xs uppercase tracking-[0.2em] text-muted sm:pl-[max(1.5rem,calc((100%_-_64rem)/2))]">
+        Scroll horizontally →
+      </p>
 
-      <ol className="space-y-14 sm:space-y-20">
-        {entries.map((entry) => (
-          <li key={entry.period + entry.title} className="relative pl-10 sm:pl-14">
-            {/* Node */}
-            <span
+      <div
+        ref={scrollRef}
+        data-lenis-prevent
+        className="overflow-x-auto overflow-y-hidden pb-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+      >
+        <ol className="relative flex min-w-max pl-[max(1rem,calc((100%_-_64rem)/2))] pr-8 sm:pl-[max(1.5rem,calc((100%_-_64rem)/2))]">
+          {/* Base spine — runs full-bleed from the very left page edge */}
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 top-14 h-px bg-foreground/15"
+          />
+          {/* Progress fill */}
+          {!shouldReduceMotion && (
+            <motion.span
               aria-hidden
-              className="absolute left-0 top-2 flex h-[15px] w-[15px] items-center justify-center"
-            >
-              <span className="h-[9px] w-[9px] rounded-full bg-accent ring-4 ring-background" />
-            </span>
+              style={{ scaleX: fillScaleX }}
+              className="pointer-events-none absolute inset-x-0 top-14 h-px origin-left bg-accent"
+            />
+          )}
 
-            <motion.div
-              initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
-              whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-12%' }}
-              transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+          {entries.map((entry) => (
+            <li
+              key={entry.period + entry.title}
+              className="relative flex w-[16.5rem] flex-shrink-0 flex-col pr-8 sm:w-[18rem]"
             >
-              <div className="mb-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <span className="font-display italic leading-none text-accent text-2xl sm:text-3xl">
+              {/* Period (above the spine) */}
+              <div className="flex h-11 items-end">
+                <span className="font-display italic leading-none text-accent text-xl sm:text-2xl">
                   {entry.period}
                 </span>
                 {entry.age && (
-                  <span className="font-sans text-xs sm:text-sm text-muted">{entry.age}</span>
+                  <span className="ml-2 font-sans text-xs text-muted">{entry.age}</span>
                 )}
               </div>
 
-              <h3 className="mb-3 font-display text-xl leading-snug text-foreground sm:mb-4 sm:text-2xl">
-                {entry.title}
-              </h3>
+              {/* Node (on the spine) */}
+              <div className="relative flex h-6 items-center">
+                <span className="h-[11px] w-[11px] rounded-full bg-accent ring-4 ring-background" />
+              </div>
 
-              <ul className="space-y-1.5 sm:space-y-2">
-                {entry.points.map((point) => (
-                  <li
-                    key={point}
-                    className="flex gap-3 text-sm leading-relaxed text-foreground/75 sm:text-base"
-                  >
-                    <span
-                      aria-hidden
-                      className="mt-[0.55em] h-1 w-1 flex-shrink-0 rounded-full bg-accent/70"
-                    />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          </li>
-        ))}
-      </ol>
+              {/* Content (below the spine) */}
+              <motion.div
+                className="pt-3"
+                initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+                whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-10%' }}
+                transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+              >
+                <h3 className="mb-3 font-display text-lg leading-snug text-foreground sm:text-xl">
+                  {entry.title}
+                </h3>
+                <ul className="space-y-1.5">
+                  {entry.points.map((point) => (
+                    <li
+                      key={point}
+                      className="flex gap-2.5 text-sm leading-relaxed text-foreground/75"
+                    >
+                      <span
+                        aria-hidden
+                        className="mt-[0.5em] h-1 w-1 flex-shrink-0 rounded-full bg-accent/70"
+                      />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </li>
+          ))}
+        </ol>
+      </div>
     </div>
   );
 }

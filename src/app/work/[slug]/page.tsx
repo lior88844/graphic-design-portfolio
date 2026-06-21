@@ -16,6 +16,7 @@ export async function generateStaticParams() {
     { slug: 'websites-for-jazz-musicians' },
     { slug: 'posters-for-jazz-performances' },
     { slug: 'apps' },
+    { slug: 'photography' },
   ];
 }
 
