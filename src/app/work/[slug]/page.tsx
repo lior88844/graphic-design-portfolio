@@ -47,6 +47,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         instagram={project.instagram}
         subsections={project.subsections}
         slug={project.slug}
+        photoAlbum={project.photoAlbum}
+        color={project.color}
       />
 
       {nextProject && <NextProject project={nextProject} />}

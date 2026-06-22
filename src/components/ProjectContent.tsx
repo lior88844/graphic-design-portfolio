@@ -6,7 +6,9 @@ import { useRef, useState } from 'react';
 import { SectionReveal } from '@/components/SectionReveal';
 import { useMotionPreference } from '@/lib/reduced-motion';
 import { ImageModal } from '@/components/ImageModal';
+import { PhotographyGallery } from '@/components/PhotographyGallery';
 import PhotoAlbum from 'react-photo-album';
+import type { PhotoMeta } from '@/content/projects';
 
 interface ProjectContentProps {
   description: string;
@@ -14,6 +16,8 @@ interface ProjectContentProps {
   images: string[];
   link?: string;
   instagram?: string;
+  photoAlbum?: PhotoMeta[];
+  color?: string;
   subsections?: {
     title: string;
     description: string;
@@ -23,10 +27,11 @@ interface ProjectContentProps {
   slug?: string;
 }
 
-export function ProjectContent({ description, services, images, link, instagram, subsections, slug }: ProjectContentProps) {
+export function ProjectContent({ description, services, images, link, instagram, subsections, slug, photoAlbum, color }: ProjectContentProps) {
   const isJazzPosters = slug === 'posters-for-jazz-performances';
   const isRaananaJazz = slug === 'raanana-jazz-festival';
   const isApps = slug === 'apps';
+  const isPhotography = slug === 'photography';
   
   return (
     <div className="bg-background">
@@ -130,6 +135,15 @@ export function ProjectContent({ description, services, images, link, instagram,
         <section className="pb-12 sm:pb-16 md:pb-24 px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
             <AppShowcaseGrid images={images} />
+          </div>
+        </section>
+      )}
+
+      {/* Photography masonry gallery */}
+      {isPhotography && photoAlbum && (
+        <section className="py-8 sm:py-12 px-4 sm:px-6 pb-16 sm:pb-24">
+          <div className="max-w-[1800px] mx-auto">
+            <PhotographyGallery photos={photoAlbum} color={color} />
           </div>
         </section>
       )}
