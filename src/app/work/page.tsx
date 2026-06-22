@@ -88,9 +88,9 @@ const CATEGORIES: Category[] = [
     cta: 'View Gallery',
     color: '#F4A261',
     images: {
-      leftTop: '/images/photography/01.jpg',
-      leftBottom: '/images/photography/03.jpg',
-      right: '/images/photography/05.jpg',
+      leftTop: '/images/photography/10.jpg',
+      leftBottom: '/images/photography/22.jpg',
+      right: '/images/photography/15.jpg',
     },
   },
 ];
