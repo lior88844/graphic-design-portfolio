@@ -28,9 +28,9 @@ const CATEGORIES: Category[] = [
     cta: 'View Websites',
     color: '#4ECDC4',
     images: {
-      leftTop: '/images/jazz-websites/amit-1.png',
-      leftBottom: '/images/jazz-websites/gil-1.png',
-      right: '/images/jazz-websites/alon-1.png',
+      leftTop: '/images/jazz-websites/amit-1.webp',
+      leftBottom: '/images/jazz-websites/gil-1.webp',
+      right: '/images/jazz-websites/alon-1.webp',
     },
   },
   {
@@ -43,9 +43,9 @@ const CATEGORIES: Category[] = [
     cta: 'View Posters',
     color: '#F7B731',
     images: {
-      leftTop: '/images/jazz-posters/1.png',
-      leftBottom: '/images/jazz-posters/2.png',
-      right: '/images/jazz-posters/hero.png',
+      leftTop: '/images/jazz-posters/1.webp',
+      leftBottom: '/images/jazz-posters/2.webp',
+      right: '/images/jazz-posters/3.webp',
     },
   },
   {
@@ -58,9 +58,9 @@ const CATEGORIES: Category[] = [
     cta: 'View Festival',
     color: '#FF6B35',
     images: {
-      leftTop: '/images/raanana-jazz/image-1.png',
+      leftTop: '/images/raanana-jazz/image-3.jpg',
       leftBottom: '/images/raanana-jazz/image-2.jpg',
-      right: '/images/raanana-jazz/hero.png',
+      right: '/images/raanana-jazz/hero.webp',
     },
   },
   {
@@ -73,9 +73,9 @@ const CATEGORIES: Category[] = [
     cta: 'View Apps',
     color: '#6C5CE7',
     images: {
-      leftTop: '/images/apps/1.png',
-      leftBottom: '/images/apps/2.png',
-      right: '/images/apps/hero.PNG',
+      leftTop: '/images/apps/1.webp',
+      leftBottom: '/images/apps/2.webp',
+      right: '/images/apps/hero.webp',
     },
   },
   {
@@ -100,6 +100,7 @@ const STICKY_TOP_STEP = 28;
 
 function StickyCard({ cat }: Readonly<{ cat: Category }>) {
   const topOffsetPx = cat.index * STICKY_TOP_STEP;
+  const isFirst = cat.index === 0;
 
   const cardStyle: CSSProperties = {
     '--card-top': `calc(var(--nav-height) + ${topOffsetPx}px)`,
@@ -172,6 +173,8 @@ function StickyCard({ cat }: Readonly<{ cat: Category }>) {
                 src={cat.images.leftTop}
                 alt=""
                 fill
+                priority={isFirst}
+                loading={isFirst ? undefined : 'lazy'}
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
                 sizes="20vw"
               />
@@ -181,6 +184,8 @@ function StickyCard({ cat }: Readonly<{ cat: Category }>) {
                 src={cat.images.leftBottom}
                 alt=""
                 fill
+                priority={isFirst}
+                loading={isFirst ? undefined : 'lazy'}
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
                 sizes="20vw"
               />
@@ -192,6 +197,8 @@ function StickyCard({ cat }: Readonly<{ cat: Category }>) {
               src={cat.images.right}
               alt={cat.title}
               fill
+              priority={isFirst}
+              loading={isFirst ? undefined : 'lazy'}
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
               sizes="35vw"
             />

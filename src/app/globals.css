@@ -39,7 +39,7 @@ body {
 }
 
 /* ─── Site-wide fixed background image ────────────────────────────────────
-   Renders /images/bg.png behind all page content using a viewport-anchored
+   Renders /images/bg.webp behind all page content using a viewport-anchored
    pseudo-element. position:fixed avoids the well-known mobile (iOS Safari)
    rendering quirks of `background-attachment: fixed` and keeps the image
    stable while content scrolls past.
@@ -54,7 +54,7 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-image: url('/images/bg.png');
+  background-image: url('/images/bg.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

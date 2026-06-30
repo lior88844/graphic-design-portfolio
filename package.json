@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "compress-images": "node scripts/compress-images.mjs"
   },
   "dependencies": {
     "framer-motion": "^11.5.4",
@@ -25,6 +26,7 @@
     "eslint": "^8.57.0",
     "eslint-config-next": "^15.0.3",
     "postcss": "^8.4.35",
+    "sharp": "^0.35.2",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.6.2"
   }
