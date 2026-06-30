@@ -19,18 +19,18 @@ interface Category {
 
 const CATEGORIES: Category[] = [
   {
-    id: 'websites',
+    id: 'apps',
     index: 0,
-    label: 'Web Design',
-    title: 'Websites',
-    description: 'Digital presence for musicians — each with its own visual voice.',
-    href: '/work/websites-for-jazz-musicians',
-    cta: 'View Websites',
-    color: '#4ECDC4',
+    label: 'Product Design',
+    title: 'Apps',
+    description: 'Interface and product design — brand systems translated into usable digital products.',
+    href: '/work/apps',
+    cta: 'View Apps',
+    color: '#6C5CE7',
     images: {
-      leftTop: '/images/jazz-websites/amit-1.webp',
-      leftBottom: '/images/jazz-websites/gil-1.webp',
-      right: '/images/jazz-websites/alon-1.webp',
+      leftTop: '/images/apps/1.webp',
+      leftBottom: '/images/apps/2.webp',
+      right: '/images/apps/hero.webp',
     },
   },
   {
@@ -49,38 +49,23 @@ const CATEGORIES: Category[] = [
     },
   },
   {
-    id: 'festivals',
+    id: 'websites',
     index: 2,
-    label: 'Visual Identity',
-    title: 'Festivals',
-    description: 'From concept to stage — identity systems built for the energy of live music.',
-    href: '/work/raanana-jazz-festival',
-    cta: 'View Festival',
-    color: '#FF6B35',
+    label: 'Web Design',
+    title: 'Websites',
+    description: 'Digital presence for musicians — each with its own visual voice.',
+    href: '/work/websites-for-jazz-musicians',
+    cta: 'View Websites',
+    color: '#4ECDC4',
     images: {
-      leftTop: '/images/raanana-jazz/image-3.jpg',
-      leftBottom: '/images/raanana-jazz/image-2.jpg',
-      right: '/images/raanana-jazz/hero.webp',
-    },
-  },
-  {
-    id: 'apps',
-    index: 3,
-    label: 'Product Design',
-    title: 'Apps',
-    description: 'Interface and product design — brand systems translated into usable digital products.',
-    href: '/work/apps',
-    cta: 'View Apps',
-    color: '#6C5CE7',
-    images: {
-      leftTop: '/images/apps/1.webp',
-      leftBottom: '/images/apps/2.webp',
-      right: '/images/apps/hero.webp',
+      leftTop: '/images/jazz-websites/amit-1.webp',
+      leftBottom: '/images/jazz-websites/gil-1.webp',
+      right: '/images/jazz-websites/alon-1.webp',
     },
   },
   {
     id: 'photography',
-    index: 4,
+    index: 3,
     label: 'Photography',
     title: 'Photography',
     description: 'Live jazz concert photography — light, motion, and atmosphere captured in the moment.',
@@ -91,6 +76,21 @@ const CATEGORIES: Category[] = [
       leftTop: '/images/photography/10.jpg',
       leftBottom: '/images/photography/22.jpg',
       right: '/images/photography/15.jpg',
+    },
+  },
+  {
+    id: 'festivals',
+    index: 4,
+    label: 'Visual Identity',
+    title: 'Festivals',
+    description: 'From concept to stage — identity systems built for the energy of live music.',
+    href: '/work/raanana-jazz-festival',
+    cta: 'View Festival',
+    color: '#FF6B35',
+    images: {
+      leftTop: '/images/raanana-jazz/image-3.jpg',
+      leftBottom: '/images/raanana-jazz/image-2.jpg',
+      right: '/images/raanana-jazz/hero.webp',
     },
   },
 ];
@@ -247,7 +247,7 @@ export default function WorkPage() {
             </motion.p>
           </header>
 
-          <section className="flex-1 min-w-0 flex flex-col gap-12 pb-[60dvh]">
+          <section className="flex-1 min-w-0 flex flex-col gap-12 pb-[max(2rem,calc(40dvh-var(--nav-height)-112px))]">
             {CATEGORIES.map((cat) => (
               <StickyCard key={cat.id} cat={cat} />
             ))}
