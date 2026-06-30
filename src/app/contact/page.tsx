@@ -1,12 +1,22 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { InstagramLogoIcon, LinkedinLogoIcon, WhatsappLogoIcon, EnvelopeIcon } from '@phosphor-icons/react';
 
 const EMAIL = 'dearliordoron@gmail.com';
 const EMAIL_SUBJECT = "I want to work with you Lior!";
 const MAILTO = `mailto:${EMAIL}?subject=${encodeURIComponent(EMAIL_SUBJECT)}`;
-const INSTAGRAM_URL = 'https://instagram.com/dearliordoron';
+const INSTAGRAM_URL = 'https://www.instagram.com/dearliordoron/';
 const INSTAGRAM_HANDLE = '@dearliordoron';
+const LINKEDIN_URL = 'https://www.linkedin.com/in/dearliordoron/';
+const WHATSAPP_URL = 'https://wa.me/972546988844';
+
+const CHANNELS = [
+  { label: 'Instagram', href: INSTAGRAM_URL, external: true,  Icon: InstagramLogoIcon },
+  { label: 'LinkedIn',  href: LINKEDIN_URL,  external: true,  Icon: LinkedinLogoIcon  },
+  { label: 'Email',     href: MAILTO,        external: false, Icon: EnvelopeIcon      },
+  { label: 'WhatsApp',  href: WHATSAPP_URL,  external: true,  Icon: WhatsappLogoIcon  },
+];
 
 const EASE = [0.25, 0.1, 0.25, 1] as const;
 
@@ -80,61 +90,61 @@ export default function ContactPage() {
           </p>
         </motion.div>
 
-        {/* Secondary channels — same type system, smaller scale */}
+        {/* Social / contact icons */}
         <motion.div
-          className="mt-20 sm:mt-32 grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-16"
+          className="mt-20 sm:mt-28"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-15%' }}
           transition={{ duration: 0.6, ease: EASE }}
         >
-          <div>
-            <span className="block text-[10px] sm:text-xs uppercase tracking-[0.22em] text-foreground/50 mb-4">
-              Elsewhere
-            </span>
-            <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-baseline gap-2 font-normal text-foreground transition-colors duration-300 hover:text-foreground/80"
-              style={{
-                fontFamily: DISPLAY_FONT,
-                fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
-                letterSpacing: '-0.03em',
-                lineHeight: 1.05,
-              }}
-            >
-              <span>Instagram</span>
-              <span
-                aria-hidden="true"
-                className="text-[0.55em] text-foreground/55 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          <span className="block text-[10px] sm:text-xs uppercase tracking-[0.22em] text-foreground/50 mb-6">
+            Find me
+          </span>
+          <div className="flex items-center gap-5">
+            {CHANNELS.map(({ label, href, external, Icon }) => (
+              <motion.a
+                key={label}
+                href={href}
+                {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                aria-label={label}
+                className="group flex items-center justify-center w-11 h-11 rounded-full border border-foreground/20 text-foreground/60 transition-colors duration-300 hover:border-foreground/70 hover:text-foreground"
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.18, ease: [0.25, 0.1, 0.25, 1] }}
               >
-                ↗
-              </span>
-            </a>
-            <p className="mt-2 text-sm text-foreground/55">{INSTAGRAM_HANDLE}</p>
+                <Icon size={18} weight="regular" aria-hidden />
+              </motion.a>
+            ))}
           </div>
+        </motion.div>
 
-          <div>
-            <span className="block text-[10px] sm:text-xs uppercase tracking-[0.22em] text-foreground/50 mb-4">
-              Right Now
-            </span>
-            <p
-              className="font-normal text-foreground"
-              style={{
-                fontFamily: DISPLAY_FONT,
-                fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
-                letterSpacing: '-0.03em',
-                lineHeight: 1.05,
-              }}
-            >
-              Open for{' '}
-              <em className="not-italic text-foreground/60">2026</em>
-            </p>
-            <p className="mt-3 text-sm text-foreground/55 max-w-xs leading-relaxed">
-              Accepting select projects. Typical timelines range from two to eight weeks depending on scope.
-            </p>
-          </div>
+        {/* Availability */}
+        <motion.div
+          className="mt-16 sm:mt-24"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-15%' }}
+          transition={{ delay: 0.1, duration: 0.6, ease: EASE }}
+        >
+          <span className="block text-[10px] sm:text-xs uppercase tracking-[0.22em] text-foreground/50 mb-4">
+            Right Now
+          </span>
+          <p
+            className="font-normal text-foreground"
+            style={{
+              fontFamily: DISPLAY_FONT,
+              fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
+              letterSpacing: '-0.03em',
+              lineHeight: 1.05,
+            }}
+          >
+            Open for{' '}
+            <em className="not-italic text-foreground/60">2026</em>
+          </p>
+          <p className="mt-3 text-sm text-foreground/55 max-w-xs leading-relaxed">
+            Accepting select projects. Typical timelines range from two to eight weeks depending on scope.
+          </p>
         </motion.div>
       </div>
     </div>
