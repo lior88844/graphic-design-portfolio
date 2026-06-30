@@ -14,9 +14,9 @@ Create image directories and add your project photos:
 
 ```bash
 # Directory structure is already created at:
-public/images/raanana-jazz/
-public/images/jazz-websites/
-public/images/jazz-posters/
+public/images/festivals/
+public/images/websites/
+public/images/posters/
 ```
 
 See `public/images/README.md` for image specifications.

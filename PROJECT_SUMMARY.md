@@ -174,9 +174,9 @@ graphic-design-portfilio/
 ├── public/
 │   └── images/                # Project images
 │       ├── README.md          # Image specs
-│       ├── raanana-jazz/
-│       ├── jazz-websites/
-│       └── jazz-posters/
+│       ├── festivals/
+│       ├── websites/
+│       └── posters/
 ├── package.json
 ├── tsconfig.json
 ├── tailwind.config.ts

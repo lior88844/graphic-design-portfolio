@@ -142,16 +142,16 @@ Create directories in `public/images/` for each project and add your images:
 ```
 public/
 └── images/
-    ├── raanana-jazz/
+    ├── festivals/
     │   ├── hero.jpg
     │   ├── website-1.jpg
     │   ├── website-2.jpg
     │   └── ...
-    ├── jazz-websites/
+    ├── websites/
     │   ├── hero.jpg
     │   ├── amit-1.jpg
     │   └── ...
-    └── jazz-posters/
+    └── posters/
         ├── hero.jpg
         ├── roni-eytan.jpg
         └── ...

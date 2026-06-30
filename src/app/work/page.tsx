@@ -43,9 +43,9 @@ const CATEGORIES: Category[] = [
     cta: 'View Posters',
     color: '#F7B731',
     images: {
-      leftTop: '/images/jazz-posters/1.webp',
-      leftBottom: '/images/jazz-posters/2.webp',
-      right: '/images/jazz-posters/3.webp',
+      leftTop: '/images/posters/1.webp',
+      leftBottom: '/images/posters/2.webp',
+      right: '/images/posters/3.webp',
     },
   },
   {
@@ -58,9 +58,9 @@ const CATEGORIES: Category[] = [
     cta: 'View Websites',
     color: '#4ECDC4',
     images: {
-      leftTop: '/images/jazz-websites/amit-1.webp',
-      leftBottom: '/images/jazz-websites/gil-1.webp',
-      right: '/images/jazz-websites/alon-1.webp',
+      leftTop: '/images/websites/amit-1.webp',
+      leftBottom: '/images/websites/gil-1.webp',
+      right: '/images/websites/alon-1.webp',
     },
   },
   {
@@ -88,9 +88,9 @@ const CATEGORIES: Category[] = [
     cta: 'View Festival',
     color: '#FF6B35',
     images: {
-      leftTop: '/images/raanana-jazz/image-3.jpg',
-      leftBottom: '/images/raanana-jazz/image-2.jpg',
-      right: '/images/raanana-jazz/hero.webp',
+      leftTop: '/images/festivals/image-3.jpg',
+      leftBottom: '/images/festivals/image-2.jpg',
+      right: '/images/festivals/hero.webp',
     },
   },
 ];
