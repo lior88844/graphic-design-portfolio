@@ -41,14 +41,22 @@ export default function SunflowerLoader() {
       if (current >= 100) clearInterval(counter);
     }, tick);
 
-    // Gate dismissal on BOTH conditions:
-    // (a) minimum animation time has elapsed, AND
-    // (b) the page 'load' event has fired (all images, fonts, CSS bg downloaded).
+    // Gate dismissal on ALL conditions:
+    // (a) minimum animation time has elapsed
+    // (b) the page 'load' event has fired
+    // (c) on the home page, the hero video has fired canplay
     let minTimeDone = false;
     let pageLoaded = document.readyState === 'complete';
 
+    // On the home page wait for the hero video; on every other page this gate
+    // starts as already satisfied. Also check the synchronous flag in case the
+    // video mounted and fired canplay before this effect ran.
+    const isHome = window.location.pathname === '/' || window.location.pathname === '';
+    const w = window as Window & { __heroVideoReady?: boolean };
+    let heroReady = !isHome || w.__heroVideoReady === true;
+
     const tryHide = () => {
-      if (minTimeDone && pageLoaded) setDone(true);
+      if (minTimeDone && pageLoaded && heroReady) setDone(true);
     };
 
     const minTimer = setTimeout(() => {
@@ -66,8 +74,17 @@ export default function SunflowerLoader() {
       tryHide();
     };
 
+    const onHeroReady = () => {
+      heroReady = true;
+      tryHide();
+    };
+
     if (!pageLoaded) {
       window.addEventListener('load', onLoad);
+    }
+
+    if (!heroReady) {
+      window.addEventListener('hero-media-ready', onHeroReady);
     }
 
     return () => {
@@ -75,6 +92,7 @@ export default function SunflowerLoader() {
       clearTimeout(minTimer);
       clearTimeout(maxTimer);
       window.removeEventListener('load', onLoad);
+      window.removeEventListener('hero-media-ready', onHeroReady);
     };
   }, []);
 

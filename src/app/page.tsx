@@ -42,13 +42,13 @@ export default function HomePage() {
             className="animate-fade-rise text-5xl sm:text-7xl md:text-8xl font-normal leading-[0.95] max-w-7xl text-white"
             style={{ fontFamily: 'var(--font-display), serif', letterSpacing: '-2.46px' }}
           >
-            The interface{' '}
-            <em className="not-italic text-white/60">is the product.</em>{' '}
-            I build both.
+            Code, design,{' '}
+            <em className="not-italic text-white/60">and the space</em>{' '}
+            between.
           </h1>
 
           <p className="animate-fade-rise-delay text-white/60 text-base sm:text-lg max-w-2xl mt-8 leading-relaxed">
-            Lior is a UX/UI engineer who designs digital products with intention and ships them in production code — no handoff required.
+            Lior is a creative developer and designer shaping digital products and identities for music, culture, and independent brands.
           </p>
 
           <div className="animate-fade-rise-delay-2 mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
