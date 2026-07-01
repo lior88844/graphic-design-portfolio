@@ -22,10 +22,10 @@ const CATEGORIES: Category[] = [
     id: 'apps',
     index: 0,
     label: 'Product Design',
-    title: 'Product Design',
+    title: 'Apps',
     description: 'UX/UI engineering — from user problem to shipped interface, designed and built by the same person.',
     href: '/work/apps',
-    cta: 'View Work',
+    cta: 'View Apps',
     color: '#6C5CE7',
     images: {
       leftTop: '/images/apps/1.webp',
