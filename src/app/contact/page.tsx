@@ -92,10 +92,10 @@ export default function ContactPage() {
 
         {/* Social / contact icons */}
         <motion.div
-          className="mt-20 sm:mt-28"
+          className="relative z-[60] mt-20 sm:mt-28"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-15%' }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, ease: EASE }}
         >
           <span className="block text-[10px] sm:text-xs uppercase tracking-[0.22em] text-foreground/50 mb-6">
