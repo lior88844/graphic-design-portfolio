@@ -3,40 +3,43 @@
     "period": "2013–2014",
     "title": "Educational Emissary — Toronto",
     "points": [
-      "Led educational and community programs abroad for a year of service.",
-      "Represented Israel through public events, dialogue programs, and cross-cultural outreach."
+      "Designed and ran educational programs for 100+ participants across cultural and community contexts.",
+      "Rapid iteration on program format based on live audience feedback — an early practice in user-centered design.",
+      "Managed multiple stakeholder expectations while keeping the participant experience central."
     ]
   },
   {
     "period": "2014–2016",
     "title": "Israel Defense Forces — Instructor & Team Lead",
     "points": [
-      "Served as a Spike missile-systems instructor, then promoted to head of instructors.",
-      "Designed and delivered training programs for new instructors.",
-      "Oversaw a team of instructors and was accountable for readiness outcomes."
+      "Designed instructional programs for complex technical systems: breaking high-stakes information into learnable steps.",
+      "Built and refined curriculum based on trainee performance — a direct parallel to usability testing and iteration.",
+      "Led a team of instructors, accountable for readiness outcomes and training consistency."
     ]
   },
   {
     "period": "2016–2017",
     "title": "Educational Emissary — Washington, D.C.",
     "points": [
-      "Designed and ran education and outreach programs for diverse audiences.",
-      "Organized large-scale events and managed multiple stakeholders."
+      "Designed programs for diverse audiences across backgrounds and age groups — adapting message and format to context.",
+      "Organized large-scale public events, managing logistics and multi-stakeholder communication."
     ]
   },
   {
     "period": "2020–2021",
     "title": "B.A. Studies — Tel-Hai College",
     "points": [
-      "Began a degree focused on Psychology and East Asian Studies.",
-      "Started tutoring statistics, including students with learning disabilities."
+      "Pursued a dual major in Psychology and East Asian Studies.",
+      "Studied human behavior, cognition, and decision-making — the academic foundation of UX research and product thinking.",
+      "Began tutoring statistics, including students with learning disabilities."
     ]
   },
   {
     "period": "2021–2022",
     "title": "Statistics Tutor",
     "points": [
-      "Tutored 40+ college students in statistics.",
+      "Tutored 40+ college students in statistics, including those with learning disabilities.",
+      "Developed multiple explanatory models for the same concept — direct practice in cognitive load reduction and information architecture.",
       "Achieved top marks in statistics coursework."
     ]
   },
@@ -46,16 +49,16 @@
     "points": [
       "Completed the Coding Academy full-stack bootcamp.",
       "Trained in JavaScript, React, Node.js, and MongoDB — graduating with a full-stack project.",
-      "Transitioned from psychology and education into software engineering."
+      "Transitioned from education and psychology into software engineering."
     ]
   },
   {
     "period": "Mid 2023",
     "title": "Software Engineer — Plannie",
     "points": [
-      "Built frontend features and third-party integrations.",
-      "Shipped payments, SMS, and WhatsApp functionality.",
-      "Resolved customer-facing technical issues across support and engineering."
+      "Built frontend features and third-party integrations in a live product.",
+      "Shipped payments, SMS, and WhatsApp functionality from spec to production.",
+      "Became the escalation point for customer-facing technical issues — first systematic exposure to real user problems."
     ]
   },
   {
@@ -72,42 +75,43 @@
     "title": "B.A. in Psychology & East Asian Studies",
     "points": [
       "Completed the degree with a dual major.",
-      "Conducted academic research and wrote seminar papers on behavior, identity, and East Asian studies."
+      "Wrote seminar papers on behavior, identity, and cognition — research skills directly applicable to user research and design rationale."
     ]
   },
   {
     "period": "2024–2025 (Taipei)",
     "title": "Mandarin Studies & Remote Engineering — Taipei",
     "points": [
-      "Awarded a Huayu Scholarship to study Mandarin at NTNU (Mandarin Training Center).",
-      "Balanced full-time language study with remote software engineering.",
-      "Gained cross-cultural fluency working across time zones and cultures."
+      "Awarded a Huayu Scholarship to study Mandarin full-time at NTNU.",
+      "Balanced language immersion with remote software engineering across time zones.",
+      "Deepened cross-cultural fluency — critical for designing products used by diverse audiences."
     ]
   },
   {
     "period": "2024–2025 (Tel Aviv)",
     "title": "Design, Branding & Web for Musicians",
     "points": [
-      "Designed posters, branding, and visual identities for musicians and cultural projects.",
-      "Built and shipped websites for artists and events.",
-      "Combined engineering, design, and visual storytelling end to end."
+      "Designed posters, visual identities, and websites for musicians and cultural projects.",
+      "Owned the full loop: brief, concept, visual execution, and technical build.",
+      "Combined engineering, design, and user understanding end to end."
     ]
   },
   {
     "period": "2025",
-    "title": "Pivot to Product & UX",
+    "title": "Pivot to Product & UX Engineering",
     "points": [
-      "Deepened focus on UX/UI design and product management.",
-      "Moved from pure engineering toward human-centered, product-driven work."
+      "Formalized a focus on UX/UI engineering: interface design, prototyping, and design systems.",
+      "Applied psychology and engineering background to human-centered product work.",
+      "Moved from feature-level engineering toward owning the full product design and build cycle."
     ]
   },
   {
     "period": "2025",
     "title": "Independent Product Projects",
     "points": [
-      "FairTips — a restaurant tip calculator.",
-      "Wheel of Imagination — a children's creativity app.",
-      "Lead-generation tools and user-retention dashboards.",
+      "FairTips — a restaurant tip calculator focused on fairness and clarity of split.",
+      "Wheel of Imagination — a children's creativity app; designed the interaction model and built the UI.",
+      "Lead-generation tools and user-retention dashboards for small businesses.",
       "AI and WhatsApp automation prototypes."
     ]
   },
@@ -115,16 +119,17 @@
     "period": "2025–2026",
     "title": "Product Engineer — Muza",
     "points": [
-      "Built Muza end-to-end alongside the founding team — owning product thinking, UX decisions, and engineering.",
-      "Drove the full cycle from problem definition through shipped features."
+      "Built Muza end-to-end alongside the founding team — from product definition through shipped features.",
+      "Owned UX decisions, interaction design, and front-end architecture simultaneously.",
+      "Drove the full cycle: problem definition, user flows, interface design, and production engineering."
     ]
   },
   {
     "period": "2026",
-    "title": "Boston",
+    "title": "What's Next",
     "points": [
-      "Relocating to Boston with a decade of compounding context: engineering, design, education, and culture.",
-      "Seeking roles at the intersection of product, design, and engineering."
+      "Bringing a compounding background in product engineering, UX/UI design, psychology, and cross-cultural work.",
+      "Seeking UX engineering and product design roles at companies where design and code are owned by the same person."
     ]
   }
 ]

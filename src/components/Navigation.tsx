@@ -127,7 +127,7 @@ export function Navigation() {
               }}
             >
               <a
-                href="/lior-doron-cv.pdf"
+                href="/Lior Doron - cv.pdf"
                 download="Lior Doron - CV.pdf"
                 className="liquid-glass rounded-full px-6 py-2.5 text-sm text-white hover:scale-[1.03] transition-transform duration-200 inline-block"
               >
@@ -225,7 +225,7 @@ export function Navigation() {
                   className="pt-4"
                 >
                   <a
-                    href="/lior-doron-cv.pdf"
+                    href="/Lior Doron - cv.pdf"
                     download="Lior Doron - CV.pdf"
                     className="liquid-glass rounded-full px-7 py-3 text-base text-foreground inline-block"
                   >
@@ -238,6 +238,7 @@ export function Navigation() {
                     </em>
                   </a>
                 </motion.li>
+
               </motion.ul>
             </div>
           </motion.div>

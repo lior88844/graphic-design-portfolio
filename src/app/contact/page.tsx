@@ -48,9 +48,34 @@ export default function ContactPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.25, duration: 0.6, ease: EASE }}
         >
-          Interested in working together? Reach out to discuss engineering support, visual identity,
-          web design, or print — for products, artists, and cultural initiatives.
+          Looking for a UX/UI engineer who owns the design and the code? Reach out — I'm open to
+          product roles and UX engineering work at companies building things worth using.
         </motion.p>
+
+        {/* Social icons — right below the intro */}
+        <motion.div
+          className="mt-10 sm:mt-12"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6, ease: EASE }}
+        >
+          <div className="flex items-center gap-4">
+            {CHANNELS.map(({ label, href, external, Icon }) => (
+              <motion.a
+                key={label}
+                href={href}
+                {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                aria-label={label}
+                className="flex items-center justify-center w-11 h-11 rounded-full border border-foreground/20 text-foreground/60 transition-colors duration-300 hover:border-foreground/70 hover:text-foreground"
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.18, ease: [0.25, 0.1, 0.25, 1] }}
+              >
+                <Icon size={18} weight="regular" aria-hidden />
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
 
         {/* Email — the centerpiece, treated as a typographic statement */}
         <motion.div
@@ -88,35 +113,6 @@ export default function ContactPage() {
           <p className="mt-5 text-sm text-foreground/55 max-w-md leading-relaxed">
             Typical reply within 24&ndash;48 hours.
           </p>
-        </motion.div>
-
-        {/* Social / contact icons */}
-        <motion.div
-          className="relative z-[60] mt-20 sm:mt-28"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: EASE }}
-        >
-          <span className="block text-[10px] sm:text-xs uppercase tracking-[0.22em] text-foreground/50 mb-6">
-            Find me
-          </span>
-          <div className="flex items-center gap-5">
-            {CHANNELS.map(({ label, href, external, Icon }) => (
-              <motion.a
-                key={label}
-                href={href}
-                {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                aria-label={label}
-                className="group flex items-center justify-center w-11 h-11 rounded-full border border-foreground/20 text-foreground/60 transition-colors duration-300 hover:border-foreground/70 hover:text-foreground"
-                whileHover={{ scale: 1.08 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ duration: 0.18, ease: [0.25, 0.1, 0.25, 1] }}
-              >
-                <Icon size={18} weight="regular" aria-hidden />
-              </motion.a>
-            ))}
-          </div>
         </motion.div>
 
         {/* Availability */}

@@ -22,10 +22,10 @@ const CATEGORIES: Category[] = [
     id: 'apps',
     index: 0,
     label: 'Product Design',
-    title: 'Apps',
-    description: 'Interface and product design — brand systems translated into usable digital products.',
+    title: 'Product Design',
+    description: 'UX/UI engineering — from user problem to shipped interface, designed and built by the same person.',
     href: '/work/apps',
-    cta: 'View Apps',
+    cta: 'View Work',
     color: '#6C5CE7',
     images: {
       leftTop: '/images/apps/1.webp',
@@ -242,8 +242,8 @@ export default function WorkPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              Identity, web, and print — approached with the same structure and care as building
-              software.
+              Product design, identity, and visual work — each one designed and built by
+              the same person.
             </motion.p>
           </header>
 

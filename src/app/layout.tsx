@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import 'react-photo-album/styles.css';
 import { Navigation } from '@/components/Navigation';
+import { Footer } from '@/components/Footer';
 import { GrainOverlay } from '@/components/GrainOverlay';
 import { MotionProvider } from '@/lib/reduced-motion';
 import { SmoothScroll } from '@/components/SmoothScroll';
@@ -39,17 +40,17 @@ const siteUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: 'Lior Doron — Software Engineer & Graphic Designer',
+  title: 'Lior Doron — UX/UI Engineer & Product Designer',
   description:
-    'Software engineer and graphic designer building digital products, interfaces, and visual identity for jazz, culture, and live music.',
+    'UX/UI engineer and product designer who designs and builds digital products end to end — from user research to production code.',
   icons: {
     icon: '/logo.png',
     apple: '/logo.png',
   },
   openGraph: {
-    title: 'Lior Doron — Software Engineer & Graphic Designer',
+    title: 'Lior Doron — UX/UI Engineer & Product Designer',
     description:
-      'Software engineer and graphic designer building digital products, interfaces, and visual identity for jazz, culture, and live music.',
+      'UX/UI engineer and product designer who designs and builds digital products end to end — from user research to production code.',
     images: ['/logo.png'],
   },
 };
@@ -78,6 +79,7 @@ export default function RootLayout({
             <main className="[overflow-x:clip] pt-[var(--nav-height)]">
               {children}
             </main>
+            <Footer />
           </SmoothScroll>
         </MotionProvider>
       </body>

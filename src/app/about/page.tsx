@@ -19,8 +19,8 @@ export default function AboutPage() {
               About
             </p>
             <h1 className="mb-14 max-w-2xl font-display text-2xl leading-snug text-foreground sm:mb-20 sm:text-3xl md:text-4xl">
-              Software engineer with a product and design sensibility — built on
-              psychology, education, and work across four countries.
+              UX engineer with the range to go from research to production code
+              — grounded in psychology, sharpened by teaching, built across four countries.
             </h1>
           </SectionReveal>
         </div>
