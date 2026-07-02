@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { LinkedinLogoIcon, EnvelopeIcon } from '@phosphor-icons/react';
+import { MobileOnePager } from '@/components/MobileOnePager';
 
 const HeroVideo = dynamic(() => import('@/components/HeroVideo'), { ssr: false });
 const HeroCursor = dynamic(() => import('@/components/HeroCursor'), { ssr: false });
@@ -52,18 +53,54 @@ export default function HomePage() {
           </p>
 
           <div className="animate-fade-rise-delay-2 mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+            {/* Desktop: navigate to /work route */}
             <Link
               id="hero-cta"
               href="/work"
-              className="liquid-glass rounded-full px-14 py-5 text-base text-white hover:scale-[1.03] transition-transform duration-200 inline-block cursor-none"
+              className="liquid-glass rounded-full px-14 py-5 text-base text-white hover:scale-[1.03] transition-transform duration-200 hidden md:inline-block cursor-none"
             >
               View Work
             </Link>
+            {/* Mobile: social links as pills */}
+            <div className="flex items-center gap-3 md:hidden">
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="liquid-glass rounded-full px-5 py-3 text-white hover:scale-[1.03] transition-transform duration-200 flex items-center justify-center"
+              >
+                <LinkedinLogoIcon size={18} weight="fill" aria-hidden />
+              </a>
+              <a
+                href={GITHUB_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="liquid-glass rounded-full px-5 py-3 text-white hover:scale-[1.03] transition-transform duration-200 flex items-center justify-center"
+              >
+                <GitHubIcon size={18} />
+              </a>
+              <a
+                href={MAILTO}
+                aria-label="Email"
+                className="liquid-glass rounded-full px-5 py-3 text-white hover:scale-[1.03] transition-transform duration-200 flex items-center justify-center"
+              >
+                <EnvelopeIcon size={18} weight="fill" aria-hidden />
+              </a>
+              <a
+                href="/Lior Doron - cv.pdf"
+                download="Lior Doron - CV.pdf"
+                className="liquid-glass rounded-full px-5 py-3 text-sm text-white hover:scale-[1.03] transition-transform duration-200 tracking-wide"
+              >
+                CV ↓
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* Footer bar — overlaid on the hero video */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 px-6 lg:px-10 py-5 flex items-center justify-between">
+        {/* Footer bar — overlaid on the hero video, desktop only */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 px-6 lg:px-10 py-5 hidden md:flex items-center justify-between">
           <p className="text-[11px] text-white/50 tracking-wide">
             © {new Date().getFullYear()} Lior Doron.
           </p>
@@ -104,6 +141,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Mobile one-pager: Work, About, Contact sections stacked below hero */}
+      <MobileOnePager />
     </div>
   );
 }

@@ -4,22 +4,36 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { stagger } from '@/lib/motion';
 import { useMotionPreference } from '@/lib/reduced-motion';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/work', label: 'Work' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/', label: 'Home', mobileAnchor: 'hero-section' },
+  { href: '/work', label: 'Work', mobileAnchor: 'work' },
+  { href: '/about', label: 'About', mobileAnchor: 'about' },
+  { href: '/contact', label: 'Contact', mobileAnchor: 'contact' },
 ];
+
+/** Maps section IDs (from IntersectionObserver) back to the nav link's href. */
+const SECTION_HREF_MAP: Record<string, string> = {
+  'hero-section': '/',
+  work: '/work',
+  about: '/about',
+  contact: '/contact',
+};
 
 export function Navigation() {
   const pathname = usePathname();
   const { shouldReduceMotion } = useMotionPreference();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  /**
+   * On the home route (mobile one-pager), track which section is in view so we
+   * can highlight the correct nav item even though the URL never changes.
+   */
+  const [activeMobileHref, setActiveMobileHref] = useState<string>('/');
 
   const isHome = pathname === '/';
 
@@ -42,8 +56,59 @@ export function Navigation() {
     return () => { document.body.style.overflow = ''; };
   }, [isMobileMenuOpen]);
 
-  // At the top of any page: transparent nav. Once the user scrolls, switch to
-  // the blurred/solid background. Text stays light because the page bg is dark.
+  // Track active section on the mobile one-pager (only when at '/')
+  useEffect(() => {
+    if (pathname !== '/') {
+      setActiveMobileHref(pathname);
+      return;
+    }
+
+    setActiveMobileHref('/');
+
+    const observers: IntersectionObserver[] = [];
+
+    Object.keys(SECTION_HREF_MAP).forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveMobileHref(SECTION_HREF_MAP[id]);
+          }
+        },
+        // Trigger when the top 30% of the section crosses the middle of the screen
+        { rootMargin: '-20% 0px -70% 0px', threshold: 0 },
+      );
+
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, [pathname]);
+
+  /**
+   * Handles mobile menu anchor clicks.
+   *   - When already on '/', prevent default navigation and smooth-scroll after
+   *     the menu close animation (≈ 350 ms) has finished.
+   *   - When on another route, let the browser navigate to '/#anchor' naturally.
+   */
+  const handleMobileAnchorClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, anchor: string) => {
+      setIsMobileMenuOpen(false);
+
+      if (pathname === '/') {
+        e.preventDefault();
+        setTimeout(() => {
+          document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 320);
+      }
+      // On other routes: let browser navigate to '/#anchor'; natural hash scrolling
+    },
+    [pathname],
+  );
+
   const isGlass = !scrolled;
 
   return (
@@ -77,7 +142,8 @@ export function Navigation() {
           {/* Desktop Nav Links */}
           <ul className="hidden md:flex gap-6 lg:gap-8 items-center">
             {navLinks.map((link, index) => {
-              const isActive = pathname === link.href ||
+              const isActive =
+                pathname === link.href ||
                 (link.href === '/work' && pathname.startsWith('/work'));
 
               return (
@@ -175,10 +241,10 @@ export function Navigation() {
         {isMobileMenuOpen && (
           <motion.div
             className="md:hidden fixed inset-0 bg-background z-[45]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
           >
             <div className="flex flex-col items-center justify-center h-full px-6">
               <motion.ul
@@ -187,13 +253,12 @@ export function Navigation() {
                 animate="open"
                 exit="closed"
                 variants={{
-                  open: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
-                  closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } },
+                  open: { transition: { staggerChildren: 0.08, delayChildren: 0.15 } },
+                  closed: { transition: { staggerChildren: 0.04, staggerDirection: -1 } },
                 }}
               >
                 {navLinks.map((link) => {
-                  const isActive = pathname === link.href ||
-                    (link.href === '/work' && pathname.startsWith('/work'));
+                  const isActive = activeMobileHref === link.href;
 
                   return (
                     <motion.li
@@ -204,14 +269,15 @@ export function Navigation() {
                       }}
                       transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
                     >
-                      <Link
-                        href={link.href}
-                        className={`text-4xl font-bold transition-colors ${
-                          isActive ? 'text-accent' : 'text-foreground'
+                      <a
+                        href={`/#${link.mobileAnchor}`}
+                        onClick={(e) => handleMobileAnchorClick(e, link.mobileAnchor)}
+                        className={`text-4xl font-bold transition-colors duration-200 ${
+                          isActive ? 'text-accent' : 'text-foreground/70 hover:text-foreground'
                         }`}
                       >
                         {link.label}
-                      </Link>
+                      </a>
                     </motion.li>
                   );
                 })}
@@ -238,7 +304,6 @@ export function Navigation() {
                     </em>
                   </a>
                 </motion.li>
-
               </motion.ul>
             </div>
           </motion.div>
