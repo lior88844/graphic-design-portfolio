@@ -168,7 +168,7 @@ export default function HomePage() {
     }, 0);
   }
 
-  async function handleSend() {
+  function handleSend() {
     if (!hasMessage || sendState === 'sending') return;
 
     // Capture position before any state change unmounts the button
@@ -177,33 +177,28 @@ export default function HomePage() {
     const oy = rect ? (rect.top + rect.height / 2) / globalThis.innerHeight : 0.8;
 
     setSendState('sending');
-    try {
-      const fullMessage = subtitle.trim()
-        ? `${message.trim()}\n\n${subtitle.trim()}`
-        : message.trim();
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: fullMessage, replyEmail: replyEmail.trim() }),
-      });
-      if (res.ok) {
 
-        setMessage('');
-        setSubtitle('');
-        setReplyEmail('');
-        fireStars(ox, oy);
-        setTimeout(() => {
-          setContactOpen(false);
-          setTimeout(() => setSendState('idle'), 1500);
-        }, 200);
-      } else {
-        setSendState('error');
-        setTimeout(() => setSendState('idle'), 3000);
-      }
-    } catch {
-      setSendState('error');
-      setTimeout(() => setSendState('idle'), 3000);
-    }
+    const fullMessage = subtitle.trim()
+      ? `${message.trim()}\n\n${subtitle.trim()}`
+      : message.trim();
+    const replyTo = replyEmail.trim();
+    // GitHub Pages is static — open the user's mail client instead of a server API
+    const subject = encodeURIComponent(
+      replyTo ? `Hey Lior! (from ${replyTo}) — portfolio contact` : 'Hey Lior! — portfolio contact',
+    );
+    const body = encodeURIComponent(replyTo ? `${fullMessage}\n\n— ${replyTo}` : fullMessage);
+    const link = document.createElement('a');
+    link.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+    link.click();
+
+    setMessage('');
+    setSubtitle('');
+    setReplyEmail('');
+    fireStars(ox, oy);
+    setTimeout(() => {
+      setContactOpen(false);
+      setTimeout(() => setSendState('idle'), 1500);
+    }, 200);
   }
 
   function handleGoBack() {
