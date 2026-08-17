@@ -19,8 +19,8 @@ export default function AboutPage() {
               About
             </p>
             <h1 className="mb-14 max-w-2xl font-display text-2xl leading-snug text-foreground sm:mb-20 sm:text-3xl md:text-4xl">
-              UX engineer with the range to go from research to production code
-              — grounded in psychology, sharpened by teaching, built across four countries.
+              I&apos;m a UX engineer and designer. I come from a psychology background,
+              spent years teaching, and have lived and worked in a few different places along the way.
             </h1>
           </SectionReveal>
         </div>

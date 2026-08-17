@@ -23,7 +23,7 @@ const CATEGORIES: Category[] = [
     index: 0,
     label: 'Product Design',
     title: 'Apps',
-    description: 'UX/UI engineering — from user problem to shipped interface, designed and built by the same person.',
+    description: 'UX/UI work — from early sketches to the final shipped thing.',
     href: '/work/apps',
     cta: 'View Apps',
     color: '#6C5CE7',
@@ -242,8 +242,7 @@ export default function WorkPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              Product design, identity, and visual work — each one designed and built by
-              the same person.
+              Product design, identity, and visual work — a collection of things I made.
             </motion.p>
           </header>
 

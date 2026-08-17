@@ -48,8 +48,8 @@ export default function ContactPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.25, duration: 0.6, ease: EASE }}
         >
-          Looking for a UX/UI engineer who owns the design and the code? Reach out — I'm open to
-          product roles and UX engineering work at companies building things worth using.
+          I&apos;m currently open to product and UX engineering roles. If something you&apos;re
+          working on feels like a good fit, I&apos;d love to hear about it.
         </motion.p>
 
         {/* Social icons — right below the intro */}
@@ -139,7 +139,7 @@ export default function ContactPage() {
             <em className="not-italic text-foreground/60">2026</em>
           </p>
           <p className="mt-3 text-sm text-foreground/55 max-w-xs leading-relaxed">
-            Accepting select projects. Typical timelines range from two to eight weeks depending on scope.
+            Available for freelance projects. Timelines typically range from two to eight weeks depending on scope.
           </p>
         </motion.div>
       </div>

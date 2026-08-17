@@ -217,7 +217,7 @@ export const projects: Project[] = [
     category: 'Product Design',
     year: '2024–2025',
     description:
-      'UX/UI engineering across three products — each with its own user problem, design rationale, and production build. Designed and shipped by the same person.',
+      'UX/UI work across three products — each starting from a specific user problem and built through to a shipped interface.',
     services: ['UX Research', 'Product Design', 'UI Engineering', 'Prototyping', 'Design Systems'],
     heroImage: '/images/apps/hero.webp',
     images: [
@@ -233,7 +233,7 @@ export const projects: Project[] = [
       {
         title: 'Muza',
         description:
-          'Built end-to-end with the founding team. The challenge: a product at the intersection of music discovery and social curation, where the interface had to feel effortless while surfacing complex relational data. Owned the problem definition, user flows, component architecture, and front-end engineering from day one through launch.',
+          'Built end-to-end with the founding team. The challenge: a product at the intersection of music discovery and social curation, where the interface had to feel effortless while surfacing complex relational data. Worked on problem definition, user flows, component architecture, and front-end engineering from the beginning through launch.',
         images: [
           '/images/apps/hero.webp',
           '/images/apps/1.webp',
@@ -252,7 +252,7 @@ export const projects: Project[] = [
       {
         title: 'Wheel of Imagination',
         description:
-          'A creativity tool for children, built around open-ended prompts and random exploration. The UX challenge: designing for delight and surprise without overwhelming young users. Focused on minimal UI, large touch targets, and motion that rewards interaction rather than just decorates it.',
+          'A creativity tool for children, built around open-ended prompts and random exploration. The challenge: designing for delight and surprise without overwhelming young users. Focused on minimal UI, large touch targets, and motion that feels responsive rather than decorative.',
         images: [
           '/images/apps/5.webp',
           '/images/apps/7.webp',

@@ -4,7 +4,7 @@
     "title": "Educational Emissary — Toronto",
     "points": [
       "Designed and ran educational programs for 100+ participants across cultural and community contexts.",
-      "Rapid iteration on program format based on live audience feedback — an early practice in user-centered design.",
+      "Iterated on program format based on live audience feedback.",
       "Managed multiple stakeholder expectations while keeping the participant experience central."
     ]
   },
@@ -13,7 +13,7 @@
     "title": "Israel Defense Forces — Instructor & Team Lead",
     "points": [
       "Designed instructional programs for complex technical systems: breaking high-stakes information into learnable steps.",
-      "Built and refined curriculum based on trainee performance — a direct parallel to usability testing and iteration.",
+      "Revised curriculum based on trainee performance.",
       "Led a team of instructors, accountable for readiness outcomes and training consistency."
     ]
   },
@@ -30,7 +30,7 @@
     "title": "B.A. Studies — Tel-Hai College",
     "points": [
       "Pursued a dual major in Psychology and East Asian Studies.",
-      "Studied human behavior, cognition, and decision-making — the academic foundation of UX research and product thinking.",
+      "Studied human behavior, cognition, and decision-making.",
       "Began tutoring statistics, including students with learning disabilities."
     ]
   },
@@ -39,7 +39,7 @@
     "title": "Statistics Tutor",
     "points": [
       "Tutored 40+ college students in statistics, including those with learning disabilities.",
-      "Developed multiple explanatory models for the same concept — direct practice in cognitive load reduction and information architecture.",
+      "Developed different ways of explaining the same concept depending on who I was working with.",
       "Achieved top marks in statistics coursework."
     ]
   },
@@ -58,7 +58,7 @@
     "points": [
       "Built frontend features and third-party integrations in a live product.",
       "Shipped payments, SMS, and WhatsApp functionality from spec to production.",
-      "Became the escalation point for customer-facing technical issues — first systematic exposure to real user problems."
+      "Became the go-to person for customer-facing technical issues."
     ]
   },
   {
@@ -75,7 +75,7 @@
     "title": "B.A. in Psychology & East Asian Studies",
     "points": [
       "Completed the degree with a dual major.",
-      "Wrote seminar papers on behavior, identity, and cognition — research skills directly applicable to user research and design rationale."
+      "Wrote seminar papers on behavior, identity, and cognition."
     ]
   },
   {
@@ -83,8 +83,7 @@
     "title": "Mandarin Studies & Remote Engineering — Taipei",
     "points": [
       "Awarded a Huayu Scholarship to study Mandarin full-time at NTNU.",
-      "Balanced language immersion with remote software engineering across time zones.",
-      "Deepened cross-cultural fluency — critical for designing products used by diverse audiences."
+      "Balanced language immersion with remote software engineering across time zones."
     ]
   },
   {
@@ -92,17 +91,15 @@
     "title": "Design, Branding & Web for Musicians",
     "points": [
       "Designed posters, visual identities, and websites for musicians and cultural projects.",
-      "Owned the full loop: brief, concept, visual execution, and technical build.",
-      "Combined engineering, design, and user understanding end to end."
+      "Handled the full loop: brief, concept, visual execution, and technical build."
     ]
   },
   {
     "period": "2025",
     "title": "Pivot to Product & UX Engineering",
     "points": [
-      "Formalized a focus on UX/UI engineering: interface design, prototyping, and design systems.",
-      "Applied psychology and engineering background to human-centered product work.",
-      "Moved from feature-level engineering toward owning the full product design and build cycle."
+      "Shifted focus toward UX/UI engineering: interface design, prototyping, and design systems.",
+      "Applied psychology and engineering background to human-centered product work."
     ]
   },
   {
@@ -120,16 +117,7 @@
     "title": "Product Engineer — Muza",
     "points": [
       "Built Muza end-to-end alongside the founding team — from product definition through shipped features.",
-      "Owned UX decisions, interaction design, and front-end architecture simultaneously.",
-      "Drove the full cycle: problem definition, user flows, interface design, and production engineering."
-    ]
-  },
-  {
-    "period": "2026",
-    "title": "What's Next",
-    "points": [
-      "Bringing a compounding background in product engineering, UX/UI design, psychology, and cross-cultural work.",
-      "Seeking UX engineering and product design roles at companies where design and code are owned by the same person."
+      "Worked on UX decisions, interaction design, and front-end architecture simultaneously."
     ]
   }
 ]
